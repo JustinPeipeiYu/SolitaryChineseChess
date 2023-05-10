@@ -1,0 +1,94 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<!---->
+<head>
+    <style>
+        canvas{border:thin solid black}
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="1000" height="600">
+    </canvas>
+    <script>
+        var ctx = document.getElementById("canvas").getContext("2d");
+        ctx.lineWidth = 4;
+        ctx.fillStyle = "black";
+
+        for (let i = 0; i < 10; i++) {
+            ctx.beginPath();
+            ctx.moveTo(300, 100 + i * 45);
+            ctx.lineTo(300 + 8 * 50, 100 + i * 45);
+            ctx.stroke();
+            ctx.closePath();
+        }
+        for (let i = 0; i < 9; i++) {
+            ctx.beginPath();
+            ctx.moveTo(300 + i * 50, 100);
+            ctx.lineTo(300 + i * 50, 100 + 9 * 45);
+            ctx.stroke();
+            ctx.closePath();
+
+        }
+        ctx.beginPath();
+        ctx.moveTo(300 + 3 * 50, 100);
+        ctx.lineTo(300 + 5 * 50, 100 + 2 * 45);
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.moveTo(300 + 3 * 50, 100 + 2 * 45);
+        ctx.lineTo(300 + 5 * 50, 100);
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.moveTo(300 + 3 * 50, 100 + 7 * 45);
+        ctx.lineTo(300 + 5 * 50, 100 + 9 * 45);
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.moveTo(300 + 3 * 50, 100 + 9 * 45);
+        ctx.lineTo(300 + 5 * 50, 100 + 7 * 45);
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.strokeStyle = "white";
+        for (let i = 1; i < 8; i++) {
+            ctx.beginPath();
+            ctx.moveTo(300 + i * 50, 100 + 4 * 45);
+            ctx.lineTo(300 + i * 50, 100 + 5 * 45);
+            ctx.stroke();
+            ctx.closePath();
+
+        }
+
+        function drawPoint(x, y) {
+            ctx.lineWidth = 4;
+            ctx.strokeStyle = "black";
+            ctx.strokeRect(x - 2, y - 2, 4, 4);
+        }
+        for (let i = 0; i < 9; i++) {
+            for (let j = 0; j < 10; j++) {
+                drawPoint(300 + i * 50, 100 + j * 45);
+            }
+        }
+
+        ctx.beginPath()
+        ctx.arc(300 + 4 * 50, 100, 20, 0, Math.PI * 2, true);
+        ctx.fill();
+        ctx.stroke();
+        ctx.closePath();
+
+    </script>
+</body>
+<!--
+<div class="text-center">
+    <h1>Hello, world!</h1>
+    <p>The time on the server is @DateTime.Now</p>
+</div>
+    -->
