@@ -8,113 +8,32 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Page1">
     <Grid>
-        <!-- Main Grid that holds A, B, C, and D -->
+        <!-- Main Grid -->
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Name="A" Width="*"/>
+                <ColumnDefinition Name="B" Width="*"/>
+                <ColumnDefinition Name="C" Width="*"/>
+
+                <ColumnDefinition Name="D" Width="*"/>
+                <ColumnDefinition Name="E" Width="*"/>
+                <ColumnDefinition Name="F" Width="*"/>
+
+                <ColumnDefinition Name="G" Width="*"/>
+                <ColumnDefinition Name="H" Width="*"/>
+                <ColumnDefinition Name="I" Width="*"/>
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Name="10" Height="*" />
+            <RowDefinition Name="9" Height="*"/>
+            <RowDefinition Name="8" Height="*"/>
+            <RowDefinition Name="7" Height="*" />
+            <RowDefinition Name="6" Height="*"/>
 
-            <Grid x:Name="gridA1" Grid.Column="0" Grid.Row="0"/>
-            <GridSplitter Grid.Column="1" Grid.Row="0" Height="5" HorizontalAlignment="Center"/>
-
-            <Grid x:Name="gridA2" Grid.Column="1" Grid.Row="0"/>
-            <GridSplitter Grid.Column="2" Grid.Row="0" Height="5" HorizontalAlignment="Center"/>
-
-            <Grid x:Name="gridA3" Grid.Column="2" Grid.Row="0"/>
-            <GridSplitter Grid.Column="3" Grid.Row="0" Width="5" HorizontalAlignment="Center"/>
-
-            <Grid x:Name="gridA4" Grid.Column="3" Grid.Row="0"/>
-            <GridSplitter Grid.Column="4" Grid.Row="0" Width="5" HorizontalAlignment="Center"/>
-
-            <Grid x:Name="gridA5" Grid.Column="4" Grid.Row="0"/>
-            <GridSplitter Grid.Column="5" Grid.Row="0" Width="5" HorizontalAlignment="Center"/>
-
-            <Grid x:Name="gridA6" Grid.Column="5" Grid.Row="0"/>
-            <GridSplitter Grid.Column="6" Grid.Row="0" Width="5" HorizontalAlignment="Center"/>
-
-            <Grid x:Name="gridA7" Grid.Column="6" Grid.Row="0"/>
-            <GridSplitter Grid.Column="7" Grid.Row="0" Width="5" HorizontalAlignment="Center"/>
-
-            <Grid x:Name="gridA8" Grid.Column="7" Grid.Row="0"/>
-            <GridSplitter Grid.Column="8" Grid.Row="0" Width="5" HorizontalAlignment="Center"/>
-
-            <Grid x:Name="gridA9" Grid.Column="8" Grid.Row="0"/>
-            <GridSplitter Grid.Column="9" Grid.Row="0" Width="5" HorizontalAlignment="Center"/>
-
-        <Grid x:Name="gridB1" Grid.Column="0" Grid.Row="1"/>
-        <GridSplitter Grid.Column="1" Grid.Row="1" Height="5" HorizontalAlignment="Center"/>
-
-        <Grid x:Name="gridB2" Grid.Column="1" Grid.Row="1"/>
-        <GridSplitter Grid.Column="2" Grid.Row="1" Height="5" HorizontalAlignment="Center"/>
-
-        <Grid x:Name="gridB3" Grid.Column="2" Grid.Row="1"/>
-        <GridSplitter Grid.Column="3" Grid.Row="1" Width="5" HorizontalAlignment="Center"/>
-
-        <Grid x:Name="gridB4" Grid.Column="3" Grid.Row="1"/>
-        <GridSplitter Grid.Column="4" Grid.Row="1" Width="5" HorizontalAlignment="Center"/>
-
-        <Grid x:Name="gridB5" Grid.Column="4" Grid.Row="1"/>
-        <GridSplitter Grid.Column="5" Grid.Row="1" Width="5" HorizontalAlignment="Center"/>
-
-        <Grid x:Name="gridB6" Grid.Column="5" Grid.Row="1"/>
-        <GridSplitter Grid.Column="6" Grid.Row="1" Width="5" HorizontalAlignment="Center"/>
-
-        <Grid x:Name="gridB7" Grid.Column="6" Grid.Row="1"/>
-        <GridSplitter Grid.Column="7" Grid.Row="1" Width="5" HorizontalAlignment="Center"/>
-
-        <Grid x:Name="gridB8" Grid.Column="7" Grid.Row="1"/>
-        <GridSplitter Grid.Column="8" Grid.Row="1" Width="5" HorizontalAlignment="Center"/>
-
-        <Grid x:Name="gridB9" Grid.Column="8" Grid.Row="1"/>
-        <GridSplitter Grid.Column="9" Grid.Row="1" Width="5" HorizontalAlignment="Center"/>
-
-        <Grid x:Name="gridC1" Grid.Column="0" Grid.Row="1"/>
-        <GridSplitter Grid.Column="1" Grid.Row="1" Height="5" HorizontalAlignment="Center"/>
-
-        <Grid x:Name="gridC2" Grid.Column="1" Grid.Row="1"/>
-        <GridSplitter Grid.Column="2" Grid.Row="1" Height="5" HorizontalAlignment="Center"/>
-
-        <Grid x:Name="gridC3" Grid.Column="2" Grid.Row="1"/>
-        <GridSplitter Grid.Column="3" Grid.Row="1" Width="5" HorizontalAlignment="Center"/>
-
-        <Grid x:Name="gridC4" Grid.Column="3" Grid.Row="1"/>
-        <GridSplitter Grid.Column="4" Grid.Row="1" Width="5" HorizontalAlignment="Center"/>
-
-        <Grid x:Name="gridC5" Grid.Column="4" Grid.Row="0"/>
-        <GridSplitter Grid.Column="5" Grid.Row="1" Width="5" HorizontalAlignment="Center"/>
-
-        <Grid x:Name="gridC6" Grid.Column="5" Grid.Row="0"/>
-        <GridSplitter Grid.Column="6" Grid.Row="1" Width="5" HorizontalAlignment="Center"/>
-
-        <Grid x:Name="gridC7" Grid.Column="6" Grid.Row="0"/>
-        <GridSplitter Grid.Column="7" Grid.Row="1" Width="5" HorizontalAlignment="Center"/>
-
-        <Grid x:Name="gridC8" Grid.Column="7" Grid.Row="0"/>
-        <GridSplitter Grid.Column="8" Grid.Row="1" Width="5" HorizontalAlignment="Center"/>
-
-        <Grid x:Name="gridC9" Grid.Column="8" Grid.Row="0"/>
-        <GridSplitter Grid.Column="9" Grid.Row="1" Width="5" HorizontalAlignment="Center"/>
+            <RowDefinition Name="5" Height="*"/>
+            <RowDefinition Name="4" Height="*" />
+            <RowDefinition Name="3" Height="*"/>
+            <RowDefinition Name="2" Height="*"/>
+            <RowDefinition Name="1" Height="*" />
+        </Grid.RowDefinitions>
     </Grid>
 </Page>
