@@ -14,81 +14,268 @@
     <canvas id="canvas" width="1000" height="600">
     </canvas>
     <script>
-        var ctx = document.getElementById("canvas").getContext("2d");
-        ctx.lineWidth = 4;
-        ctx.fillStyle = "black";
-
-        for (let i = 0; i < 10; i++) {
-            ctx.beginPath();
-            ctx.moveTo(300, 100 + i * 45);
-            ctx.lineTo(300 + 8 * 50, 100 + i * 45);
-            ctx.stroke();
-            ctx.closePath();
-        }
-        for (let i = 0; i < 9; i++) {
-            ctx.beginPath();
-            ctx.moveTo(300 + i * 50, 100);
-            ctx.lineTo(300 + i * 50, 100 + 9 * 45);
-            ctx.stroke();
-            ctx.closePath();
-
-        }
-        ctx.beginPath();
-        ctx.moveTo(300 + 3 * 50, 100);
-        ctx.lineTo(300 + 5 * 50, 100 + 2 * 45);
-        ctx.stroke();
-        ctx.closePath();
-
-        ctx.beginPath();
-        ctx.moveTo(300 + 3 * 50, 100 + 2 * 45);
-        ctx.lineTo(300 + 5 * 50, 100);
-        ctx.stroke();
-        ctx.closePath();
-
-        ctx.beginPath();
-        ctx.moveTo(300 + 3 * 50, 100 + 7 * 45);
-        ctx.lineTo(300 + 5 * 50, 100 + 9 * 45);
-        ctx.stroke();
-        ctx.closePath();
-
-        ctx.beginPath();
-        ctx.moveTo(300 + 3 * 50, 100 + 9 * 45);
-        ctx.lineTo(300 + 5 * 50, 100 + 7 * 45);
-        ctx.stroke();
-        ctx.closePath();
-
-        ctx.strokeStyle = "white";
-        for (let i = 1; i < 8; i++) {
-            ctx.beginPath();
-            ctx.moveTo(300 + i * 50, 100 + 4 * 45);
-            ctx.lineTo(300 + i * 50, 100 + 5 * 45);
-            ctx.stroke();
-            ctx.closePath();
-
-        }
-
-        function drawPoint(x, y) {
-            ctx.lineWidth = 4;
-            ctx.strokeStyle = "black";
-            ctx.strokeRect(x - 2, y - 2, 4, 4);
-        }
-        for (let i = 0; i < 9; i++) {
-            for (let j = 0; j < 10; j++) {
-                drawPoint(300 + i * 50, 100 + j * 45);
+        function drawGameBoard(x, y) {
+            ctx.lineWidth = "4";
+            //horizontal grid lines
+            for (let i = 0; i < 10; i++) {
+                ctx.beginPath();
+                ctx.moveTo(x, y + i * 45);
+                ctx.lineTo(x + 8 * 50, y + i * 45);
+                ctx.stroke();
+                ctx.closePath();
             }
+            //center vertical grid lines
+            for (let i = 1; i < 8; i++) {
+                ctx.beginPath();
+                ctx.moveTo(x + i * 50, y);
+                ctx.lineTo(x + i * 50, y + 4 * 45);
+                ctx.stroke();
+                ctx.moveTo(x + i * 50, y + 5 * 45);
+                ctx.lineTo(x + i * 50, y + 9 * 45);
+                ctx.stroke();
+                ctx.closePath();
+
+            }
+            //edge vertical grid lines
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(x, y + 9 * 45);
+            ctx.stroke();
+            ctx.moveTo(x + 8 * 50, y);
+            ctx.lineTo(x + 8 * 50, y + 9 * 45);
+            ctx.stroke();
+            ctx.closePath();
+            //top diagonal lines
+            ctx.beginPath();
+            ctx.moveTo(x + 3 * 50, y);
+            ctx.lineTo(x + 5 * 50, y + 2 * 45);
+            ctx.stroke();
+            ctx.closePath();
+            ctx.beginPath();
+            ctx.moveTo(x + 3 * 50, y + 2 * 45);
+            ctx.lineTo(x + 5 * 50, y);
+            ctx.stroke();
+            ctx.closePath();
+            //bottom diagonal lines
+            ctx.beginPath();
+            ctx.moveTo(x + 3 * 50, y + 7 * 45);
+            ctx.lineTo(x + 5 * 50, y + 9 * 45);
+            ctx.stroke();
+            ctx.closePath();
+            ctx.beginPath();
+            ctx.moveTo(x + 3 * 50, y + 9 * 45);
+            ctx.lineTo(x + 5 * 50, y + 7 * 45);
+            ctx.stroke();
+            ctx.closePath();
         }
-
-        ctx.beginPath()
-        ctx.arc(300 + 4 * 50, 100, 20, 0, Math.PI * 2, true);
-        ctx.fill();
-        ctx.stroke();
-        ctx.closePath();
-
+        function drawBlackGeneral(x, y) {
+            ctx.strokeStyle = "black";
+            ctx.fillStyle = "#FFE5B4";
+            ctx.lineWidth = "4";
+            ctx.beginPath();
+            ctx.arc(x, y, 20, 0, Math.PI * 2, true);
+            ctx.fill();
+            ctx.stroke();
+            ctx.closePath();
+            ctx.fillStyle = "black";
+            ctx.lineWidth = "1";
+            ctx.font = "20px sans-serif";
+            ctx.fillText("将", x - 10, y);
+            ctx.strokeText("将", x - 10, y);
+            ctx.font = "10px sans-serif";
+            ctx.fillText("jiàng", x - 10, y + 10);
+            ctx.strokeText("jiàng", x - 10, y + 10);
+        } 
+        function drawRedGeneral(x, y) {
+            ctx.strokeStyle = "black";
+            ctx.fillStyle = "#FFE5B4";
+            ctx.beginPath();
+            ctx.lineWidth = "4";
+            ctx.arc(x, y, 20, 0, Math.PI * 2, true);
+            ctx.fill();
+            ctx.stroke();
+            ctx.closePath();
+            ctx.strokeStyle = "red";
+            ctx.fillStyle = "red";
+            ctx.lineWidth = "1";
+            ctx.font = "20px sans-serif";
+            ctx.fillText("帅", x - 10, y);
+            ctx.strokeText("帅", x - 10, y);
+            ctx.font = "10px sans-serif";
+            ctx.fillText("shuài", x - 10, y + 10);
+            ctx.strokeText("shuài", x - 10, y + 10);
+        } 
+        function drawBlackGuard(x,y) {
+            ctx.strokeStyle = "black";
+            ctx.fillStyle = "#FFE5B4";
+            ctx.beginPath();
+            ctx.lineWidth = "4";
+            ctx.arc(x, y, 20, 0, Math.PI * 2, true);
+            ctx.fill();
+            ctx.stroke();
+            ctx.closePath();
+            ctx.fillStyle = "black";
+            ctx.lineWidth = "1";
+            ctx.font = "20px sans-serif";
+            ctx.fillText("士", x - 10, y+2);
+            ctx.strokeText("士", x - 10, y+2);
+            ctx.font = "10px sans-serif";
+            ctx.fillText("shì", x - 5, y + 12);
+            ctx.strokeText("shì", x - 5, y + 12);
+        }
+        function drawRedGuard(x, y) {
+            ctx.strokeStyle = "black";
+            ctx.fillStyle = "#FFE5B4";
+            ctx.beginPath();
+            ctx.lineWidth = "4";
+            ctx.arc(x, y, 20, 0, Math.PI * 2, true);
+            ctx.fill();
+            ctx.stroke();
+            ctx.closePath();
+            ctx.strokeStyle = "red";
+            ctx.fillStyle = "red";
+            ctx.lineWidth = "1";
+            ctx.font = "20px sans-serif";
+            ctx.fillText("仕", x - 10, y+2);
+            ctx.strokeText("仕", x - 10, y+2);
+            ctx.font = "10px sans-serif";
+            ctx.fillText("shì", x - 5, y + 12);
+            ctx.strokeText("shì", x - 5, y + 12);
+        }
+        function drawBlackElephant(x, y) {
+            ctx.strokeStyle = "black";
+            ctx.fillStyle = "#FFE5B4";
+            ctx.beginPath();
+            ctx.lineWidth = "4";
+            ctx.arc(x, y, 20, 0, Math.PI * 2, true);
+            ctx.fill();
+            ctx.stroke();
+            ctx.closePath();
+            ctx.fillStyle = "black";
+            ctx.lineWidth = "1";
+            ctx.font = "20px sans-serif";
+            ctx.fillText("象", x - 10, y);
+            ctx.strokeText("象", x - 10, y);
+            ctx.font = "10px sans-serif";
+            ctx.fillText("xiàng", x - 10, y + 10);
+            ctx.strokeText("xiàng", x - 10, y + 10);
+        }
+        function drawRedElephant(x,y) {
+            ctx.strokeStyle = "black";
+            ctx.fillStyle = "#FFE5B4";
+            ctx.beginPath();
+            ctx.lineWidth = "4";
+            ctx.arc(x, y, 20, 0, Math.PI * 2, true);
+            ctx.fill();
+            ctx.stroke();
+            ctx.closePath();
+            ctx.strokeStyle = "red";
+            ctx.fillStyle = "red";
+            ctx.lineWidth = "1";
+            ctx.font = "20px sans-serif";
+            ctx.fillText("相", x - 10, y);
+            ctx.strokeText("相", x - 10, y);
+            ctx.font = "10px sans-serif";
+            ctx.fillText("xiàng", x - 10, y + 10);
+            ctx.strokeText("xiàng", x - 10, y + 10);
+        }
+        function drawBlackHorse(x, y) {
+            ctx.strokeStyle = "black";
+            ctx.fillStyle = "#FFE5B4";
+            ctx.beginPath();
+            ctx.lineWidth = "4";
+            ctx.arc(x, y, 20, 0, Math.PI * 2, true);
+            ctx.fill();
+            ctx.stroke();
+            ctx.closePath();
+            ctx.fillStyle = "black";
+            ctx.lineWidth = "1";
+            ctx.font = "20px sans-serif";
+            ctx.fillText("马", x - 10, y+1);
+            ctx.strokeText("马", x - 10, y+1);
+            ctx.font = "10px sans-serif";
+            ctx.fillText("mǎ", x - 6, y + 12);
+            ctx.strokeText("mǎ", x - 6, y + 12);
+            
+        }
+        function drawRedHorse(x, y) {
+            ctx.strokeStyle = "black";
+            ctx.fillStyle = "#FFE5B4";
+            ctx.beginPath();
+            ctx.lineWidth = "4";
+            ctx.arc(x, y, 20, 0, Math.PI * 2, true);
+            ctx.fill();
+            ctx.stroke();
+            ctx.closePath();
+            ctx.strokeStyle = "red";
+            ctx.fillStyle = "red";
+            ctx.lineWidth = "1";
+            ctx.font = "20px sans-serif";
+            ctx.fillText("马", x - 10, y + 1);
+            ctx.strokeText("马", x - 10, y + 1);
+            ctx.font = "10px sans-serif";
+            ctx.fillText("mǎ", x - 6, y + 12);
+            ctx.strokeText("mǎ", x - 6, y + 12);
+        }
+        function drawBlackRook(x,y) {
+            ctx.strokeStyle = "black";
+            ctx.fillStyle = "#FFE5B4";
+            ctx.beginPath();
+            ctx.lineWidth = "4";
+            ctx.arc(x, y, 20, 0, Math.PI * 2, true);
+            ctx.fill();
+            ctx.stroke();
+            ctx.closePath();
+            ctx.fillStyle = "black";
+            ctx.lineWidth = "1";
+            ctx.font = "20px sans-serif";
+            ctx.fillText("车", x - 10, y + 1);
+            ctx.strokeText("车", x - 10, y + 1);
+            ctx.font = "10px sans-serif";
+            ctx.fillText("jū", x - 4, y + 12);
+            ctx.strokeText("jū", x - 4, y + 12);
+        }
+        function drawRedRook(x,y) {
+            ctx.strokeStyle = "black";
+            ctx.fillStyle = "#FFE5B4";
+            ctx.beginPath();
+            ctx.lineWidth = "4";
+            ctx.arc(x, y, 20, 0, Math.PI * 2, true);
+            ctx.fill();
+            ctx.stroke();
+            ctx.closePath();
+            ctx.strokeStyle = "red";
+            ctx.fillStyle = "red";
+            ctx.lineWidth = "1";
+            ctx.font = "20px sans-serif";
+            ctx.fillText("车", x - 10, y + 1);
+            ctx.strokeText("车", x - 10, y + 1);
+            ctx.font = "10px sans-serif";
+            ctx.fillText("jū", x - 4, y + 12);
+            ctx.strokeText("jū", x - 4, y + 12);
+        }
+        //setup game board
+        var ctx = document.getElementById("canvas").getContext("2d");
+        drawGameBoard(300, 100);
+        drawBlackGeneral(300 + 4 * 50, 100);
+        drawRedGeneral(300 + 4 * 50, 100 + 9 * 45);
+        drawBlackGuard(300 + 3 * 50, 100);   
+        drawBlackGuard(300 + 5 * 50, 100); 
+        drawRedGuard(300 + 3 * 50, 100 + 9 * 45);
+        drawRedGuard(300 + 5 * 50, 100 + 9 * 45);
+        drawBlackElephant(300 + 2 * 50, 100);
+        drawBlackElephant(300 + 6 * 50, 100);
+        drawRedElephant(300 + 2 * 50, 100 + 9 * 45);
+        drawRedElephant(300 + 6 * 50, 100 + 9 * 45);
+        drawBlackHorse(300 + 1 * 50, 100);
+        drawBlackHorse(300 + 7 * 50, 100);
+        drawRedHorse(300 + 1 * 50, 100 + 9 * 45);
+        drawRedHorse(300 + 7 * 50, 100 + 9 * 45);
+        drawBlackRook(300, 100);
+        drawBlackRook(300 + 8 * 50, 100);
+        drawRedRook(300, 100 + 9 * 45);
+        drawRedRook(300 + 8 * 50, 100+9*45);
     </script>
+
 </body>
-<!--
-<div class="text-center">
-    <h1>Hello, world!</h1>
-    <p>The time on the server is @DateTime.Now</p>
-</div>
-    -->
+
