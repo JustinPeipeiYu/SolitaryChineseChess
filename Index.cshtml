@@ -14,69 +14,45 @@
     <canvas id="canvas" width="1000" height="600">
     </canvas>
     <script>
-        function drawGameBoard(x, y) {
-            ctx.lineWidth = "4";
-            //horizontal grid lines
-            for (let i = 0; i < 10; i++) {
-                ctx.beginPath();
-                ctx.moveTo(x, y + i * 45);
-                ctx.lineTo(x + 8 * 50, y + i * 45);
-                ctx.stroke();
-                ctx.closePath();
-            }
-            //center vertical grid lines
-            for (let i = 1; i < 8; i++) {
-                ctx.beginPath();
-                ctx.moveTo(x + i * 50, y);
-                ctx.lineTo(x + i * 50, y + 4 * 45);
-                ctx.stroke();
-                ctx.moveTo(x + i * 50, y + 5 * 45);
-                ctx.lineTo(x + i * 50, y + 9 * 45);
-                ctx.stroke();
-                ctx.closePath();
-
-            }
-            //edge vertical grid lines
+        function drawHorizontalLine(x1, x2, y) {
             ctx.beginPath();
-            ctx.moveTo(x, y);
-            ctx.lineTo(x, y + 9 * 45);
-            ctx.stroke();
-            ctx.moveTo(x + 8 * 50, y);
-            ctx.lineTo(x + 8 * 50, y + 9 * 45);
-            ctx.stroke();
-            ctx.closePath();
-            //top diagonal lines
-            ctx.beginPath();
-            ctx.moveTo(x + 3 * 50, y);
-            ctx.lineTo(x + 5 * 50, y + 2 * 45);
-            ctx.stroke();
-            ctx.closePath();
-            ctx.beginPath();
-            ctx.moveTo(x + 3 * 50, y + 2 * 45);
-            ctx.lineTo(x + 5 * 50, y);
-            ctx.stroke();
-            ctx.closePath();
-            //bottom diagonal lines
-            ctx.beginPath();
-            ctx.moveTo(x + 3 * 50, y + 7 * 45);
-            ctx.lineTo(x + 5 * 50, y + 9 * 45);
-            ctx.stroke();
-            ctx.closePath();
-            ctx.beginPath();
-            ctx.moveTo(x + 3 * 50, y + 9 * 45);
-            ctx.lineTo(x + 5 * 50, y + 7 * 45);
+            ctx.moveTo(x1, y);
+            ctx.lineTo(x2, y);
             ctx.stroke();
             ctx.closePath();
         }
-        function drawBlackGeneral(x, y) {
-            ctx.strokeStyle = "black";
-            ctx.fillStyle = "#FFE5B4";
-            ctx.lineWidth = "4";
+        function drawVerticalLine(x, y1, y2) {
             ctx.beginPath();
-            ctx.arc(x, y, 20, 0, Math.PI * 2, true);
-            ctx.fill();
+            ctx.moveTo(x, y1);
+            ctx.lineTo(x, y2);
             ctx.stroke();
             ctx.closePath();
+        }
+        function drawDiagonalLine(x1, x2, y1, y2) {
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.stroke();
+            ctx.closePath();
+        }
+        function drawGameBoard(x, y) {
+            ctx.lineWidth = "4";
+            for (let i = 0; i < 10; i++) {
+                drawHorizontalLine(x,x + 8 * 50, y + i * 45);
+            }
+            for (let i = 1; i < 8; i++) {
+                drawVerticalLine(x + i * 50, y, y + 4 * 45);
+                drawVerticalLine(x + i * 50, y + 5 * 45, y + 9 * 45);          
+            }
+            drawVerticalLine(x, y, y + 9 * 45);
+            drawVerticalLine(x + 8 * 50, y, y + 9 * 45);
+            drawDiagonalLine(x + 3 * 50, x + 5 * 50, y, y + 2 * 45);
+            drawDiagonalLine(x + 3 * 50, x + 5 * 50, y + 2 * 45, y);
+            drawDiagonalLine(x + 3 * 50, x + 5 * 50, y + 7 * 45, y + 9 * 45);
+            drawDiagonalLine(x + 3 * 50, x + 5 * 50, y + 9 * 45, y + 7 * 45);
+        }
+        function drawBlackGeneral(x, y) {
+            drawPiece(x,y);
             ctx.fillStyle = "black";
             ctx.lineWidth = "1";
             ctx.font = "20px sans-serif";
@@ -87,14 +63,7 @@
             ctx.strokeText("jiàng", x - 10, y + 10);
         } 
         function drawRedGeneral(x, y) {
-            ctx.strokeStyle = "black";
-            ctx.fillStyle = "#FFE5B4";
-            ctx.beginPath();
-            ctx.lineWidth = "4";
-            ctx.arc(x, y, 20, 0, Math.PI * 2, true);
-            ctx.fill();
-            ctx.stroke();
-            ctx.closePath();
+            drawPiece(x,y);
             ctx.strokeStyle = "red";
             ctx.fillStyle = "red";
             ctx.lineWidth = "1";
@@ -106,14 +75,7 @@
             ctx.strokeText("shuài", x - 10, y + 10);
         } 
         function drawBlackGuard(x,y) {
-            ctx.strokeStyle = "black";
-            ctx.fillStyle = "#FFE5B4";
-            ctx.beginPath();
-            ctx.lineWidth = "4";
-            ctx.arc(x, y, 20, 0, Math.PI * 2, true);
-            ctx.fill();
-            ctx.stroke();
-            ctx.closePath();
+            drawPiece(x,y);
             ctx.fillStyle = "black";
             ctx.lineWidth = "1";
             ctx.font = "20px sans-serif";
@@ -124,14 +86,7 @@
             ctx.strokeText("shì", x - 5, y + 12);
         }
         function drawRedGuard(x, y) {
-            ctx.strokeStyle = "black";
-            ctx.fillStyle = "#FFE5B4";
-            ctx.beginPath();
-            ctx.lineWidth = "4";
-            ctx.arc(x, y, 20, 0, Math.PI * 2, true);
-            ctx.fill();
-            ctx.stroke();
-            ctx.closePath();
+            drawPiece(x,y);
             ctx.strokeStyle = "red";
             ctx.fillStyle = "red";
             ctx.lineWidth = "1";
@@ -143,14 +98,7 @@
             ctx.strokeText("shì", x - 5, y + 12);
         }
         function drawBlackElephant(x, y) {
-            ctx.strokeStyle = "black";
-            ctx.fillStyle = "#FFE5B4";
-            ctx.beginPath();
-            ctx.lineWidth = "4";
-            ctx.arc(x, y, 20, 0, Math.PI * 2, true);
-            ctx.fill();
-            ctx.stroke();
-            ctx.closePath();
+            drawPiece(x,y);
             ctx.fillStyle = "black";
             ctx.lineWidth = "1";
             ctx.font = "20px sans-serif";
@@ -161,14 +109,7 @@
             ctx.strokeText("xiàng", x - 10, y + 10);
         }
         function drawRedElephant(x,y) {
-            ctx.strokeStyle = "black";
-            ctx.fillStyle = "#FFE5B4";
-            ctx.beginPath();
-            ctx.lineWidth = "4";
-            ctx.arc(x, y, 20, 0, Math.PI * 2, true);
-            ctx.fill();
-            ctx.stroke();
-            ctx.closePath();
+            drawPiece(x,y);
             ctx.strokeStyle = "red";
             ctx.fillStyle = "red";
             ctx.lineWidth = "1";
@@ -180,14 +121,7 @@
             ctx.strokeText("xiàng", x - 10, y + 10);
         }
         function drawBlackHorse(x, y) {
-            ctx.strokeStyle = "black";
-            ctx.fillStyle = "#FFE5B4";
-            ctx.beginPath();
-            ctx.lineWidth = "4";
-            ctx.arc(x, y, 20, 0, Math.PI * 2, true);
-            ctx.fill();
-            ctx.stroke();
-            ctx.closePath();
+            drawPiece(x,y);
             ctx.fillStyle = "black";
             ctx.lineWidth = "1";
             ctx.font = "20px sans-serif";
@@ -199,14 +133,7 @@
             
         }
         function drawRedHorse(x, y) {
-            ctx.strokeStyle = "black";
-            ctx.fillStyle = "#FFE5B4";
-            ctx.beginPath();
-            ctx.lineWidth = "4";
-            ctx.arc(x, y, 20, 0, Math.PI * 2, true);
-            ctx.fill();
-            ctx.stroke();
-            ctx.closePath();
+            drawPiece(x,y);
             ctx.strokeStyle = "red";
             ctx.fillStyle = "red";
             ctx.lineWidth = "1";
@@ -218,14 +145,7 @@
             ctx.strokeText("mǎ", x - 6, y + 12);
         }
         function drawBlackRook(x,y) {
-            ctx.strokeStyle = "black";
-            ctx.fillStyle = "#FFE5B4";
-            ctx.beginPath();
-            ctx.lineWidth = "4";
-            ctx.arc(x, y, 20, 0, Math.PI * 2, true);
-            ctx.fill();
-            ctx.stroke();
-            ctx.closePath();
+            drawPiece(x, y);
             ctx.fillStyle = "black";
             ctx.lineWidth = "1";
             ctx.font = "20px sans-serif";
@@ -236,14 +156,7 @@
             ctx.strokeText("jū", x - 4, y + 12);
         }
         function drawRedRook(x,y) {
-            ctx.strokeStyle = "black";
-            ctx.fillStyle = "#FFE5B4";
-            ctx.beginPath();
-            ctx.lineWidth = "4";
-            ctx.arc(x, y, 20, 0, Math.PI * 2, true);
-            ctx.fill();
-            ctx.stroke();
-            ctx.closePath();
+            drawPiece(x, y);
             ctx.strokeStyle = "red";
             ctx.fillStyle = "red";
             ctx.lineWidth = "1";
@@ -254,6 +167,17 @@
             ctx.fillText("jū", x - 4, y + 12);
             ctx.strokeText("jū", x - 4, y + 12);
         }
+        function drawPiece(x, y) {
+            ctx.strokeStyle = "black";
+            ctx.fillStyle = "#FFE5B4";
+            ctx.beginPath();
+            ctx.lineWidth = "4";
+            ctx.arc(x, y, 20, 0, Math.PI * 2, true);
+            ctx.fill();
+            ctx.stroke();
+            ctx.closePath();
+        }
+        
         //setup game board
         var ctx = document.getElementById("canvas").getContext("2d");
         drawGameBoard(300, 100);
