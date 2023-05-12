@@ -167,6 +167,52 @@
             ctx.fillText("jū", x - 4, y + 12);
             ctx.strokeText("jū", x - 4, y + 12);
         }
+        function drawBlackCannon(x, y) {
+            drawPiece(x, y);
+            ctx.fillStyle = "black";
+            ctx.lineWidth = "1";
+            ctx.font = "20px sans-serif";
+            ctx.fillText("砲", x - 10, y + 1);
+            ctx.strokeText("砲", x - 10, y + 1);
+            ctx.font = "10px sans-serif";
+            ctx.fillText("pào", x - 7, y + 12);
+            ctx.strokeText("pào", x - 7, y + 12);
+        }
+        function drawRedCannon(x, y) {
+            drawPiece(x, y);
+            ctx.strokeStyle = "red";
+            ctx.fillStyle = "red";
+            ctx.lineWidth = "1";
+            ctx.font = "20px sans-serif";
+            ctx.fillText("炮", x - 10, y + 1);
+            ctx.strokeText("炮", x - 10, y + 1);
+            ctx.font = "10px sans-serif";
+            ctx.fillText("pào", x - 7, y + 12);
+            ctx.strokeText("pào", x - 7, y + 12);
+        }
+        function drawBlackSoldier(x, y) {
+            drawPiece(x, y);
+            ctx.fillStyle = "black";
+            ctx.lineWidth = "1";
+            ctx.font = "20px sans-serif";
+            ctx.fillText("卒", x - 10, y + 1);
+            ctx.strokeText("卒", x - 10, y + 1);
+            ctx.font = "10px sans-serif";
+            ctx.fillText("zú", x - 4, y + 12);
+            ctx.strokeText("zú", x - 4, y + 12);
+        }
+        function drawRedSoldier(x, y) {
+            drawPiece(x, y);
+            ctx.strokeStyle = "red";
+            ctx.fillStyle = "red";
+            ctx.lineWidth = "1";
+            ctx.font = "20px sans-serif";
+            ctx.fillText("兵", x - 10, y + 1);
+            ctx.strokeText("兵", x - 10, y + 1);
+            ctx.font = "10px sans-serif";
+            ctx.fillText("bīng", x - 8, y + 12);
+            ctx.strokeText("bīng", x -8, y + 12);
+        }
         function drawPiece(x, y) {
             ctx.strokeStyle = "black";
             ctx.fillStyle = "#FFE5B4";
@@ -177,7 +223,6 @@
             ctx.stroke();
             ctx.closePath();
         }
-        
         //setup game board
         var ctx = document.getElementById("canvas").getContext("2d");
         drawGameBoard(300, 100);
@@ -198,7 +243,16 @@
         drawBlackRook(300, 100);
         drawBlackRook(300 + 8 * 50, 100);
         drawRedRook(300, 100 + 9 * 45);
-        drawRedRook(300 + 8 * 50, 100+9*45);
+        drawRedRook(300 + 8 * 50, 100 + 9 * 45);
+        drawBlackCannon(300 + 1 * 50, 100 + 2 * 45);
+        drawBlackCannon(300 + 7 * 50, 100 + 2 * 45);
+        drawRedCannon(300 + 1 * 50, 100 + 7 * 45);
+        drawRedCannon(300 + 7 * 50, 100 + 7 * 45);
+        for (let i = 0; i <= 8; i=i+2) {
+            drawBlackSoldier(300 + i * 50, 100 + 3 * 45);
+            drawRedSoldier(300 + i * 50, 100 + 6 * 45);
+        }
+
     </script>
 
 </body>
