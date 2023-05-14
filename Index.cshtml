@@ -14,21 +14,16 @@
           margin:5px;
           border:thin solid black;
         }
-
     </style>
 </head>
 <body>
     <canvas id="canvas" width="1000" height="600">
     </canvas>
+    
     <script>
-        function handleMouseOver(elem) {
-            elem.style.background = "white";
-            elem.style.color = "black";
-        }
-        function handleMouseOut(elem) {
-            elem.style.removeProperty("color");
-            elem.style.removeProperty("background");
-        }
+        
+        var ctx = document.getElementById("canvas").getContext("2d");
+        
         function drawHorizontalLine(x1, x2, y) {
             ctx.beginPath();
             ctx.moveTo(x1, y);
@@ -239,7 +234,6 @@
             ctx.closePath();
         }
         //draw static pieces and game board lines
-        var ctx = document.getElementById("canvas").getContext("2d");
         drawGameBoard(300, 100);
         drawBlackGeneral(300 + 4 * 50, 100);
         drawRedGeneral(300 + 4 * 50, 100 + 9 * 45);
@@ -267,7 +261,24 @@
             drawBlackSoldier(300 + i * 50, 100 + 3 * 45);
             drawRedSoldier(300 + i * 50, 100 + 6 * 45);
         }
+        var xCell = document.getElementById("eX");
+
+        //report the mouse position on click
+        canvas.addEventListener("click", function (evt) {
+            var mousePos = getMousePos(canvas, evt);
+            alert(mousePos.x + ',' + mousePos.y);
+            drawRedCannon(mousePos.x,mousePos.y);
+        }, false);
+
+        //Get Mouse Position
+        function getMousePos(canvas, evt) {
+            var rect = canvas.getBoundingClientRect();
+            return {
+                x: evt.clientX - rect.left,
+                y: evt.clientY - rect.top
+            };
+        }
     </script>
-    <p onmouseover="handleMouseOver(this)" onmouseout="handleMouseOut(this)">I love you Sophia</p>
+    <p id="block1">I love you Sophia</p>
 </body>
 
