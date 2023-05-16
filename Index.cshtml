@@ -1,4 +1,4 @@
-﻿@page
+﻿@page 
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -23,7 +23,8 @@
     <script>
         
         var ctx = document.getElementById("canvas").getContext("2d");
-        
+
+
         function drawHorizontalLine(x1, x2, y) {
             ctx.beginPath();
             ctx.moveTo(x1, y);
@@ -233,12 +234,15 @@
             ctx.stroke();
             ctx.closePath();
         }
+        
+        //Piece blackGeneral = new Piece("BlackGeneral", 300 + 4 * 50, 100);
+       
         //draw static pieces and game board lines
         drawGameBoard(300, 100);
         drawBlackGeneral(300 + 4 * 50, 100);
         drawRedGeneral(300 + 4 * 50, 100 + 9 * 45);
-        drawBlackGuard(300 + 3 * 50, 100);   
-        drawBlackGuard(300 + 5 * 50, 100); 
+        drawBlackGuard(300 + 3 * 50, 100);
+        drawBlackGuard(300 + 5 * 50, 100);
         drawRedGuard(300 + 3 * 50, 100 + 9 * 45);
         drawRedGuard(300 + 5 * 50, 100 + 9 * 45);
         drawBlackElephant(300 + 2 * 50, 100);
@@ -257,19 +261,27 @@
         drawBlackCannon(300 + 7 * 50, 100 + 2 * 45);
         drawRedCannon(300 + 1 * 50, 100 + 7 * 45);
         drawRedCannon(300 + 7 * 50, 100 + 7 * 45);
-        for (let i = 0; i <= 8; i=i+2) {
+        for (let i = 0; i <= 8; i = i + 2) {
             drawBlackSoldier(300 + i * 50, 100 + 3 * 45);
             drawRedSoldier(300 + i * 50, 100 + 6 * 45);
         }
-        var xCell = document.getElementById("eX");
+        //var xCell = document.getElementById("eX");
 
         //report the mouse position on click
         canvas.addEventListener("click", function (evt) {
             var mousePos = getMousePos(canvas, evt);
             alert(mousePos.x + ',' + mousePos.y);
-            drawRedCannon(mousePos.x,mousePos.y);
+            drawRedCannon(mousePos.x, mousePos.y);
+            //test for mouse click on a piece
+            a = mousePos.x - (300 + 4 * 50);
+            a2 = a * a;
+            b = mousePos.y - 100;
+            b2 = b * b;
+            alert(Math.sqrt(a2+b2)<=10);
+            //((mousePos.x - (300 + 4 * 50)) ^ 2 + (mousePos.y - 100) ^ 2) <= 10 ^ 2
+            if (2<1) { alert("on target!"); }
         }, false);
-
+        
         //Get Mouse Position
         function getMousePos(canvas, evt) {
             var rect = canvas.getBoundingClientRect();
@@ -278,6 +290,7 @@
                 y: evt.clientY - rect.top
             };
         }
+       
     </script>
     <p id="block1">I love you Sophia</p>
 </body>
