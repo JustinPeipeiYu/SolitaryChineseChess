@@ -11,7 +11,7 @@ While the general can put pressure on the other general without even advancing i
 must sacrifice its guards to evade capture. Given all of this, there is no way to win with just a general and its guards in xiangqi. But in traditional chess, a king and any piece can still win the game. 
 
 Although there are xiangqi games on the web, they do not have pinyin written on the pieces. This makes it initally harder to recognize pieces for people who are not literate in chinese. To circumvent this impedement,
-I made a xiangqi game with pinyin and gif tutorial that is activated once the mouse hovers over a piece so that people who are new to xiangqi can easily learn the moves of the different pieces. My dream is to bring xiangqi to the western world as I truly believe it to be a more elegant and analytically complex version of chess.
+I made a xiangqi game with pinyin and gif tutorial that is activated on click so that people who are new to xiangqi can easily learn the moves of the different pieces. My dream is to bring xiangqi to the western world as I truly believe it to be a more elegant and analytically complex version of chess.
 
 
 
