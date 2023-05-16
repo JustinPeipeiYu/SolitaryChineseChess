@@ -19,51 +19,53 @@
 <body>
     <canvas id="canvas" width="1000" height="600">
     </canvas>
+
+    <canvas id="canvasCopy" width="1000" height="600"></canvas>
     
     <script>
         
         var ctx = document.getElementById("canvas").getContext("2d");
+        var ctx2=document.getElementById("canvasCopy").getContext("2d");
 
-
-        function drawHorizontalLine(x1, x2, y) {
+        function drawHorizontalLine(ctx,x1, x2, y) {
             ctx.beginPath();
             ctx.moveTo(x1, y);
             ctx.lineTo(x2, y);
             ctx.stroke();
             ctx.closePath();
         }
-        function drawVerticalLine(x, y1, y2) {
+        function drawVerticalLine(ctx,x, y1, y2) {
             ctx.beginPath();
             ctx.moveTo(x, y1);
             ctx.lineTo(x, y2);
             ctx.stroke();
             ctx.closePath();
         }
-        function drawDiagonalLine(x1, x2, y1, y2) {
+        function drawDiagonalLine(ctx,x1, x2, y1, y2) {
             ctx.beginPath();
             ctx.moveTo(x1, y1);
             ctx.lineTo(x2, y2);
             ctx.stroke();
             ctx.closePath();
         }
-        function drawGameBoard(x, y) {
+        function drawGameBoard(ctx,x, y) {
             ctx.lineWidth = "4";
             for (let i = 0; i < 10; i++) {
-                drawHorizontalLine(x,x + 8 * 50, y + i * 45);
+                drawHorizontalLine(ctx,x,x + 8 * 50, y + i * 45);
             }
             for (let i = 1; i < 8; i++) {
-                drawVerticalLine(x + i * 50, y, y + 4 * 45);
-                drawVerticalLine(x + i * 50, y + 5 * 45, y + 9 * 45);          
+                drawVerticalLine(ctx,x + i * 50, y, y + 4 * 45);
+                drawVerticalLine(ctx,x + i * 50, y + 5 * 45, y + 9 * 45);          
             }
-            drawVerticalLine(x, y, y + 9 * 45);
-            drawVerticalLine(x + 8 * 50, y, y + 9 * 45);
-            drawDiagonalLine(x + 3 * 50, x + 5 * 50, y, y + 2 * 45);
-            drawDiagonalLine(x + 3 * 50, x + 5 * 50, y + 2 * 45, y);
-            drawDiagonalLine(x + 3 * 50, x + 5 * 50, y + 7 * 45, y + 9 * 45);
-            drawDiagonalLine(x + 3 * 50, x + 5 * 50, y + 9 * 45, y + 7 * 45);
+            drawVerticalLine(ctx,x, y, y + 9 * 45);
+            drawVerticalLine(ctx,x + 8 * 50, y, y + 9 * 45);
+            drawDiagonalLine(ctx,x + 3 * 50, x + 5 * 50, y, y + 2 * 45);
+            drawDiagonalLine(ctx,x + 3 * 50, x + 5 * 50, y + 2 * 45, y);
+            drawDiagonalLine(ctx,x + 3 * 50, x + 5 * 50, y + 7 * 45, y + 9 * 45);
+            drawDiagonalLine(ctx,x + 3 * 50, x + 5 * 50, y + 9 * 45, y + 7 * 45);
         }
-        function drawBlackGeneral(x, y) {
-            drawPiece(x,y);
+        function drawBlackGeneral(ctx,x, y) {
+            drawPiece(ctx,x,y);
             ctx.fillStyle = "black";
             ctx.lineWidth = "1";
             ctx.font = "20px sans-serif";
@@ -73,8 +75,8 @@
             ctx.fillText("jiàng", x - 10, y + 10);
             ctx.strokeText("jiàng", x - 10, y + 10);
         } 
-        function drawRedGeneral(x, y) {
-            drawPiece(x,y);
+        function drawRedGeneral(ctx,x, y) {
+            drawPiece(ctx,x,y);
             ctx.strokeStyle = "red";
             ctx.fillStyle = "red";
             ctx.lineWidth = "1";
@@ -85,8 +87,8 @@
             ctx.fillText("shuài", x - 10, y + 10);
             ctx.strokeText("shuài", x - 10, y + 10);
         } 
-        function drawBlackGuard(x,y) {
-            drawPiece(x,y);
+        function drawBlackGuard(ctx,x,y) {
+            drawPiece(ctx,x,y);
             ctx.fillStyle = "black";
             ctx.lineWidth = "1";
             ctx.font = "20px sans-serif";
@@ -96,8 +98,8 @@
             ctx.fillText("shì", x - 5, y + 12);
             ctx.strokeText("shì", x - 5, y + 12);
         }
-        function drawRedGuard(x, y) {
-            drawPiece(x,y);
+        function drawRedGuard(ctx,x, y) {
+            drawPiece(ctx,x,y);
             ctx.strokeStyle = "red";
             ctx.fillStyle = "red";
             ctx.lineWidth = "1";
@@ -108,8 +110,8 @@
             ctx.fillText("shì", x - 5, y + 12);
             ctx.strokeText("shì", x - 5, y + 12);
         }
-        function drawBlackElephant(x, y) {
-            drawPiece(x,y);
+        function drawBlackElephant(ctx,x, y) {
+            drawPiece(ctx,x,y);
             ctx.fillStyle = "black";
             ctx.lineWidth = "1";
             ctx.font = "20px sans-serif";
@@ -119,8 +121,8 @@
             ctx.fillText("xiàng", x - 10, y + 10);
             ctx.strokeText("xiàng", x - 10, y + 10);
         }
-        function drawRedElephant(x,y) {
-            drawPiece(x,y);
+        function drawRedElephant(ctx,x,y) {
+            drawPiece(ctx,x,y);
             ctx.strokeStyle = "red";
             ctx.fillStyle = "red";
             ctx.lineWidth = "1";
@@ -131,8 +133,8 @@
             ctx.fillText("xiàng", x - 10, y + 10);
             ctx.strokeText("xiàng", x - 10, y + 10);
         }
-        function drawBlackHorse(x, y) {
-            drawPiece(x,y);
+        function drawBlackHorse(ctx,x, y) {
+            drawPiece(ctx,x,y);
             ctx.fillStyle = "black";
             ctx.lineWidth = "1";
             ctx.font = "20px sans-serif";
@@ -143,8 +145,8 @@
             ctx.strokeText("mǎ", x - 6, y + 12);
             
         }
-        function drawRedHorse(x, y) {
-            drawPiece(x,y);
+        function drawRedHorse(ctx,x, y) {
+            drawPiece(ctx,x,y);
             ctx.strokeStyle = "red";
             ctx.fillStyle = "red";
             ctx.lineWidth = "1";
@@ -155,8 +157,8 @@
             ctx.fillText("mǎ", x - 6, y + 12);
             ctx.strokeText("mǎ", x - 6, y + 12);
         }
-        function drawBlackRook(x,y) {
-            drawPiece(x, y);
+        function drawBlackRook(ctx,x,y) {
+            drawPiece(ctx,x, y);
             ctx.fillStyle = "black";
             ctx.lineWidth = "1";
             ctx.font = "20px sans-serif";
@@ -166,8 +168,8 @@
             ctx.fillText("jū", x - 4, y + 12);
             ctx.strokeText("jū", x - 4, y + 12);
         }
-        function drawRedRook(x,y) {
-            drawPiece(x, y);
+        function drawRedRook(ctx,x,y) {
+            drawPiece(ctx,x, y);
             ctx.strokeStyle = "red";
             ctx.fillStyle = "red";
             ctx.lineWidth = "1";
@@ -178,8 +180,8 @@
             ctx.fillText("jū", x - 4, y + 12);
             ctx.strokeText("jū", x - 4, y + 12);
         }
-        function drawBlackCannon(x, y) {
-            drawPiece(x, y);
+        function drawBlackCannon(ctx,x, y) {
+            drawPiece(ctx,x, y);
             ctx.fillStyle = "black";
             ctx.lineWidth = "1";
             ctx.font = "20px sans-serif";
@@ -189,8 +191,8 @@
             ctx.fillText("pào", x - 7, y + 12);
             ctx.strokeText("pào", x - 7, y + 12);
         }
-        function drawRedCannon(x, y) {
-            drawPiece(x, y);
+        function drawRedCannon(ctx,x, y) {
+            drawPiece(ctx,x, y);
             ctx.strokeStyle = "red";
             ctx.fillStyle = "red";
             ctx.lineWidth = "1";
@@ -201,8 +203,8 @@
             ctx.fillText("pào", x - 7, y + 12);
             ctx.strokeText("pào", x - 7, y + 12);
         }
-        function drawBlackSoldier(x, y) {
-            drawPiece(x, y);
+        function drawBlackSoldier(ctx,x, y) {
+            drawPiece(ctx,x, y);
             ctx.fillStyle = "black";
             ctx.lineWidth = "1";
             ctx.font = "20px sans-serif";
@@ -212,8 +214,8 @@
             ctx.fillText("zú", x - 4, y + 12);
             ctx.strokeText("zú", x - 4, y + 12);
         }
-        function drawRedSoldier(x, y) {
-            drawPiece(x, y);
+        function drawRedSoldier(ctx,x, y) {
+            drawPiece(ctx,x, y);
             ctx.strokeStyle = "red";
             ctx.fillStyle = "red";
             ctx.lineWidth = "1";
@@ -224,7 +226,7 @@
             ctx.fillText("bīng", x - 8, y + 12);
             ctx.strokeText("bīng", x -8, y + 12);
         }
-        function drawPiece(x, y) {
+        function drawPiece(ctx,x, y) {
             ctx.strokeStyle = "black";
             ctx.fillStyle = "#FFE5B4";
             ctx.beginPath();
@@ -238,32 +240,82 @@
         //Piece blackGeneral = new Piece("BlackGeneral", 300 + 4 * 50, 100);
        
         //draw static pieces and game board lines
-        drawGameBoard(300, 100);
-        drawBlackGeneral(300 + 4 * 50, 100);
-        drawRedGeneral(300 + 4 * 50, 100 + 9 * 45);
-        drawBlackGuard(300 + 3 * 50, 100);
-        drawBlackGuard(300 + 5 * 50, 100);
-        drawRedGuard(300 + 3 * 50, 100 + 9 * 45);
-        drawRedGuard(300 + 5 * 50, 100 + 9 * 45);
-        drawBlackElephant(300 + 2 * 50, 100);
-        drawBlackElephant(300 + 6 * 50, 100);
-        drawRedElephant(300 + 2 * 50, 100 + 9 * 45);
-        drawRedElephant(300 + 6 * 50, 100 + 9 * 45);
-        drawBlackHorse(300 + 1 * 50, 100);
-        drawBlackHorse(300 + 7 * 50, 100);
-        drawRedHorse(300 + 1 * 50, 100 + 9 * 45);
-        drawRedHorse(300 + 7 * 50, 100 + 9 * 45);
-        drawBlackRook(300, 100);
-        drawBlackRook(300 + 8 * 50, 100);
-        drawRedRook(300, 100 + 9 * 45);
-        drawRedRook(300 + 8 * 50, 100 + 9 * 45);
-        drawBlackCannon(300 + 1 * 50, 100 + 2 * 45);
-        drawBlackCannon(300 + 7 * 50, 100 + 2 * 45);
-        drawRedCannon(300 + 1 * 50, 100 + 7 * 45);
-        drawRedCannon(300 + 7 * 50, 100 + 7 * 45);
+        drawGameBoard(ctx,300, 100);
+        drawBlackGeneral(ctx,300 + 4 * 50, 100);
+        drawRedGeneral(ctx,300 + 4 * 50, 100 + 9 * 45);
+        
+        drawBlackGuard(ctx,300 + 3 * 50, 100);
+        
+        drawBlackGuard(ctx,300 + 5 * 50, 100);
+        
+        drawRedGuard(ctx,300 + 3 * 50, 100 + 9 * 45);
+        
+        drawRedGuard(ctx,300 + 5 * 50, 100 + 9 * 45);
+        
+        drawBlackElephant(ctx,300 + 2 * 50, 100);
+        
+        drawBlackElephant(ctx,300 + 6 * 50, 100);
+        
+        drawRedElephant(ctx,300 + 2 * 50, 100 + 9 * 45);
+        
+        drawRedElephant(ctx,300 + 6 * 50, 100 + 9 * 45);
+        
+        drawBlackHorse(ctx,300 + 1 * 50, 100);
+        
+        drawBlackHorse(ctx,300 + 7 * 50, 100);
+        
+        drawRedHorse(ctx,300 + 1 * 50, 100 + 9 * 45);
+        
+        drawRedHorse(ctx,300 + 7 * 50, 100 + 9 * 45);
+        
+        drawBlackRook(ctx,300, 100);
+        
+        drawBlackRook(ctx,300 + 8 * 50, 100);
+        
+        drawRedRook(ctx,300, 100 + 9 * 45);
+        
+        drawRedRook(ctx,300 + 8 * 50, 100 + 9 * 45);
+        
+        drawBlackCannon(ctx,300 + 1 * 50, 100 + 2 * 45);
+        
+        drawBlackCannon(ctx,300 + 7 * 50, 100 + 2 * 45);
+        
+        drawRedCannon(ctx,300 + 1 * 50, 100 + 7 * 45);
+        
+        drawRedCannon(ctx,300 + 7 * 50, 100 + 7 * 45);
+        
         for (let i = 0; i <= 8; i = i + 2) {
-            drawBlackSoldier(300 + i * 50, 100 + 3 * 45);
-            drawRedSoldier(300 + i * 50, 100 + 6 * 45);
+            drawBlackSoldier(ctx,300 + i * 50, 100 + 3 * 45);
+            
+            drawRedSoldier(ctx,300 + i * 50, 100 + 6 * 45);
+        }
+
+        //draw second canvas
+        drawGameBoard(ctx2, 300, 100);
+        drawRedGeneral(ctx2, 300 + 4 * 50, 100 + 9 * 45);
+        drawBlackGuard(ctx2, 300 + 3 * 50, 100);
+        drawBlackGuard(ctx2, 300 + 5 * 50, 100);
+        drawRedGuard(ctx2, 300 + 3 * 50, 100 + 9 * 45);
+        drawBlackElephant(ctx2, 300 + 2 * 50, 100);
+        drawBlackElephant(ctx2, 300 + 6 * 50, 100);
+        drawRedGuard(ctx2, 300 + 5 * 50, 100 + 9 * 45);
+        drawRedElephant(ctx2, 300 + 2 * 50, 100 + 9 * 45);
+        drawRedElephant(ctx2, 300 + 6 * 50, 100 + 9 * 45);
+        drawBlackHorse(ctx2, 300 + 1 * 50, 100);
+        drawBlackHorse(ctx2, 300 + 7 * 50, 100);
+        drawRedHorse(ctx2, 300 + 1 * 50, 100 + 9 * 45);
+        drawRedHorse(ctx2, 300 + 7 * 50, 100 + 9 * 45);
+        drawBlackRook(ctx2, 300, 100);
+        drawBlackRook(ctx2, 300 + 8 * 50, 100);
+        drawRedRook(ctx2, 300, 100 + 9 * 45);
+        drawRedRook(ctx2, 300 + 8 * 50, 100 + 9 * 45);
+        drawBlackCannon(ctx2, 300 + 1 * 50, 100 + 2 * 45);
+        drawBlackCannon(ctx2, 300 + 7 * 50, 100 + 2 * 45);
+        drawRedCannon(ctx2, 300 + 1 * 50, 100 + 7 * 45);
+        drawRedCannon(ctx2, 300 + 7 * 50, 100 + 7 * 45);
+        for (let i = 0; i <= 8; i = i + 2) {
+            drawBlackSoldier(ctx2, 300 + i * 50, 100 + 3 * 45);
+            drawRedSoldier(ctx2, 300 + i * 50, 100 + 6 * 45);
         }
         //var xCell = document.getElementById("eX");
 
@@ -276,11 +328,55 @@
             a2 = a * a;
             b = mousePos.y - @Model.Y;
             b2 = b * b;
-            alert(Math.sqrt(a2+b2)<=10);
+            if (Math.sqrt(a2 + b2) <= 20) {
+                canvas.addEventListener("mousemove", function (evt) {
+                    var mousePos = getMousePos(canvas, evt);
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawGameBoard(ctx, 300, 100);
+                    drawRedGeneral(ctx, 300 + 4 * 50, 100 + 9 * 45);
+                    drawBlackGuard(ctx, 300 + 3 * 50, 100);
+                    drawBlackGuard(ctx, 300 + 5 * 50, 100);
+                    drawRedGuard(ctx, 300 + 3 * 50, 100 + 9 * 45);
+                    drawBlackElephant(ctx, 300 + 2 * 50, 100);
+                    drawBlackElephant(ctx, 300 + 6 * 50, 100);
+                    drawRedGuard(ctx, 300 + 5 * 50, 100 + 9 * 45);
+                    drawRedElephant(ctx, 300 + 2 * 50, 100 + 9 * 45);
+                    drawRedElephant(ctx, 300 + 6 * 50, 100 + 9 * 45);
+                    drawBlackHorse(ctx, 300 + 1 * 50, 100);
+                    drawBlackHorse(ctx, 300 + 7 * 50, 100);
+                    drawRedHorse(ctx, 300 + 1 * 50, 100 + 9 * 45);
+                    drawRedHorse(ctx, 300 + 7 * 50, 100 + 9 * 45);
+                    drawBlackRook(ctx, 300, 100);
+                    drawBlackRook(ctx, 300 + 8 * 50, 100);
+                    drawRedRook(ctx, 300, 100 + 9 * 45);
+                    drawRedRook(ctx, 300 + 8 * 50, 100 + 9 * 45);
+                    drawBlackCannon(ctx, 300 + 1 * 50, 100 + 2 * 45);
+                    drawBlackCannon(ctx, 300 + 7 * 50, 100 + 2 * 45);
+                    drawRedCannon(ctx, 300 + 1 * 50, 100 + 7 * 45);
+                    drawRedCannon(ctx, 300 + 7 * 50, 100 + 7 * 45);
+                    for (let i = 0; i <= 8; i = i + 2) {
+                        drawBlackSoldier(ctx, 300 + i * 50, 100 + 3 * 45);
+                        drawRedSoldier(ctx, 300 + i * 50, 100 + 6 * 45);
+                    }
+                    drawBlackGeneral(ctx, mousePos.x, mousePos.y);
+                }, false);
+            }
             //((mousePos.x - (300 + 4 * 50)) ^ 2 + (mousePos.y - 100) ^ 2) <= 10 ^ 2
         }, false);
         
-        
+        /*
+        function erase(canvas, evt){
+            var rect = canvas.getBoundingClientRect();
+            var x= evt.clientX - rect.left;
+            var y= evt.clientY - rect.top;
+            cutCircle(ctx,x,y,20);
+        }
+        */
+        function cutCircle (ctx, x, y, radius) {
+            ctx.globalCompositeOperation = 'destination-out';
+            ctx.arc(x, y, radius, 0, Math.PI * 2, true);
+            ctx.fill();
+        }
         //Get Mouse Position
         function getMousePos(canvas, evt) {
             var rect = canvas.getBoundingClientRect();
