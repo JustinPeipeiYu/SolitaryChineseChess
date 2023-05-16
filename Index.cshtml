@@ -267,20 +267,19 @@
         }
         //var xCell = document.getElementById("eX");
 
-        //report the mouse position on click
+        //do something on click
         canvas.addEventListener("click", function (evt) {
             var mousePos = getMousePos(canvas, evt);
             alert(mousePos.x + ',' + mousePos.y);
-            drawRedCannon(mousePos.x, mousePos.y);
             //test for mouse click on a piece
-            a = mousePos.x - (300 + 4 * 50);
+            a = mousePos.x - (@Model.X);
             a2 = a * a;
-            b = mousePos.y - 100;
+            b = mousePos.y - @Model.Y;
             b2 = b * b;
             alert(Math.sqrt(a2+b2)<=10);
             //((mousePos.x - (300 + 4 * 50)) ^ 2 + (mousePos.y - 100) ^ 2) <= 10 ^ 2
-            if (2<1) { alert("on target!"); }
         }, false);
+        
         
         //Get Mouse Position
         function getMousePos(canvas, evt) {
