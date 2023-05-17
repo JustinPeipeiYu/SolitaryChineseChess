@@ -20,12 +20,10 @@
     <canvas id="canvas" width="1000" height="600">
     </canvas>
 
-    <canvas id="canvasCopy" width="1000" height="600"></canvas>
     
     <script>
         
         var ctx = document.getElementById("canvas").getContext("2d");
-        var ctx2=document.getElementById("canvasCopy").getContext("2d");
 
         function drawHorizontalLine(ctx,x1, x2, y) {
             ctx.beginPath();
@@ -49,6 +47,7 @@
             ctx.closePath();
         }
         function drawGameBoard(ctx,x, y) {
+            ctx.strokeStyle = "black";
             ctx.lineWidth = "4";
             for (let i = 0; i < 10; i++) {
                 drawHorizontalLine(ctx,x,x + 8 * 50, y + i * 45);
@@ -290,35 +289,8 @@
             drawRedSoldier(ctx,300 + i * 50, 100 + 6 * 45);
         }
 
-        //draw second canvas
-        drawGameBoard(ctx2, 300, 100);
-        drawRedGeneral(ctx2, 300 + 4 * 50, 100 + 9 * 45);
-        drawBlackGuard(ctx2, 300 + 3 * 50, 100);
-        drawBlackGuard(ctx2, 300 + 5 * 50, 100);
-        drawRedGuard(ctx2, 300 + 3 * 50, 100 + 9 * 45);
-        drawBlackElephant(ctx2, 300 + 2 * 50, 100);
-        drawBlackElephant(ctx2, 300 + 6 * 50, 100);
-        drawRedGuard(ctx2, 300 + 5 * 50, 100 + 9 * 45);
-        drawRedElephant(ctx2, 300 + 2 * 50, 100 + 9 * 45);
-        drawRedElephant(ctx2, 300 + 6 * 50, 100 + 9 * 45);
-        drawBlackHorse(ctx2, 300 + 1 * 50, 100);
-        drawBlackHorse(ctx2, 300 + 7 * 50, 100);
-        drawRedHorse(ctx2, 300 + 1 * 50, 100 + 9 * 45);
-        drawRedHorse(ctx2, 300 + 7 * 50, 100 + 9 * 45);
-        drawBlackRook(ctx2, 300, 100);
-        drawBlackRook(ctx2, 300 + 8 * 50, 100);
-        drawRedRook(ctx2, 300, 100 + 9 * 45);
-        drawRedRook(ctx2, 300 + 8 * 50, 100 + 9 * 45);
-        drawBlackCannon(ctx2, 300 + 1 * 50, 100 + 2 * 45);
-        drawBlackCannon(ctx2, 300 + 7 * 50, 100 + 2 * 45);
-        drawRedCannon(ctx2, 300 + 1 * 50, 100 + 7 * 45);
-        drawRedCannon(ctx2, 300 + 7 * 50, 100 + 7 * 45);
-        for (let i = 0; i <= 8; i = i + 2) {
-            drawBlackSoldier(ctx2, 300 + i * 50, 100 + 3 * 45);
-            drawRedSoldier(ctx2, 300 + i * 50, 100 + 6 * 45);
-        }
         //var xCell = document.getElementById("eX");
-
+        var counter=0;
         //do something on click
         canvas.addEventListener("click", function (evt) {
             var mousePos = getMousePos(canvas, evt);
@@ -328,9 +300,18 @@
             a2 = a * a;
             b = mousePos.y - @Model.Y;
             b2 = b * b;
-            if (Math.sqrt(a2 + b2) <= 20) {
-                canvas.addEventListener("mousemove", function (evt) {
-                    var mousePos = getMousePos(canvas, evt);
+            if (Math.sqrt(a2 + b2) <= 20 && counter % 2 == 0) {
+                    counter++;
+                    canvas.addEventListener("mousemove", movePiece, false);
+            } else if (Math.sqrt(a2 + b2) <= 20 && counter % 2 == 1) {
+                    counter++;
+                    canvas.removeEventListener("mousemove", movePiece, false);
+            }
+            //((mousePos.x - (300 + 4 * 50)) ^ 2 + (mousePos.y - 100) ^ 2) <= 10 ^ 2
+        }, false);
+        
+        function movePiece(evt){
+            var mousePos = getMousePos(canvas, evt);
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
                     drawGameBoard(ctx, 300, 100);
                     drawRedGeneral(ctx, 300 + 4 * 50, 100 + 9 * 45);
@@ -354,16 +335,14 @@
                     drawBlackCannon(ctx, 300 + 7 * 50, 100 + 2 * 45);
                     drawRedCannon(ctx, 300 + 1 * 50, 100 + 7 * 45);
                     drawRedCannon(ctx, 300 + 7 * 50, 100 + 7 * 45);
-                    for (let i = 0; i <= 8; i = i + 2) {
-                        drawBlackSoldier(ctx, 300 + i * 50, 100 + 3 * 45);
-                        drawRedSoldier(ctx, 300 + i * 50, 100 + 6 * 45);
-                    }
+                        for (let i = 0; i <= 8; i = i + 2) {
+                            drawBlackSoldier(ctx, 300 + i * 50, 100 + 3 * 45);
+                            drawRedSoldier(ctx, 300 + i * 50, 100 + 6 * 45);
+                        }
                     drawBlackGeneral(ctx, mousePos.x, mousePos.y);
-                }, false);
-            }
-            //((mousePos.x - (300 + 4 * 50)) ^ 2 + (mousePos.y - 100) ^ 2) <= 10 ^ 2
-        }, false);
-        
+                    ctx.fillStyle="black";
+                    ctx.strokeText(counter,100,100);
+        }
         /*
         function erase(canvas, evt){
             var rect = canvas.getBoundingClientRect();
@@ -372,11 +351,6 @@
             cutCircle(ctx,x,y,20);
         }
         */
-        function cutCircle (ctx, x, y, radius) {
-            ctx.globalCompositeOperation = 'destination-out';
-            ctx.arc(x, y, radius, 0, Math.PI * 2, true);
-            ctx.fill();
-        }
         //Get Mouse Position
         function getMousePos(canvas, evt) {
             var rect = canvas.getBoundingClientRect();
