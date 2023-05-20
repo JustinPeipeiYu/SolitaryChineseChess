@@ -347,14 +347,51 @@
         //Piece blackGeneral = new Piece("BlackGeneral", 300 + 4 * 50, 100);
        
         //draw static pieces and game board lines
-        var xStart = 200;
-        var yStart = 50;
-        var width = 60;
+        
+
+        @{
+            double xStart = 200;
+        double yStart = 50;
+        double width = 60;
+            //all 32 game pieces
+        public static Piece blackGeneral = new Piece(5, xStart + 4 * width, yStart);
+        public static Piece blackGuard1 = new Piece(4, xStart + 3 * width, yStart);
+        public static Piece blackGuard2 = new Piece(6, xStart + 5 * width, yStart);
+        public static Piece blackElephant1 = new Piece(3, xStart + 2 * width, yStart);
+        public static Piece blackElephant2 = new Piece(7, xStart + 6 * width, yStart);
+        public static Piece blackHorse1 = new Piece(2, xStart + 1 * width, yStart);
+        public static Piece blackHorse2 = new Piece(8, xStart + 7 * width, yStart);
+        public static Piece blackRook1 = new Piece(1, xStart, yStart);
+        public static Piece blackRook2 = new Piece(9, xStart + 8 * width, yStart);
+        public static Piece blackCannon1 = new Piece(10, xStart + 1 * width, yStart + 2 * width);
+        public static Piece blackCannon2 = new Piece(11, xStart + 7 * width, yStart + 2 * width);
+        public static Piece blackSoldier1 = new Piece(12, xStart, yStart + 3 * width);
+        public static Piece blackSoldier2 = new Piece(13, xStart + 2 * width, yStart + 3 * width);
+        public static Piece blackSoldier3 = new Piece(14, xStart + 4 * width, yStart + 3 * width);
+        public static Piece blackSoldier4 = new Piece(15, xStart + 6 * width, yStart + 3 * width);
+        public static Piece blackSoldier5 = new Piece(16, xStart + 8 * width, yStart + 3 * width);
+        public static Piece redGeneral = new Piece(28, xStart + 4 * width, yStart + 9 * width);
+        public static Piece redGuard1 = new Piece(27, xStart + 3 * width, yStart + 9 * width);
+        public static Piece redGuard2 = new Piece(29, xStart + 5 * width, yStart + 9 * width);
+        public static Piece redElephant1 = new Piece(26, xStart + 2 * width, yStart + 9 * width);
+        public static Piece redElephant2 = new Piece(30, xStart + 6 * width, yStart + 9 * width);
+        public static Piece redHorse1 = new Piece(25, xStart + 1 * width, yStart + 9 * width);
+        public static Piece redHorse2 = new Piece(31, xStart + 7 * width, yStart + 9 * width);
+        public static Piece redRook1 = new Piece(24, xStart, yStart + 9 * width);
+        public static Piece redRook2 = new Piece(32, xStart + 8 * width, yStart + 9 * width);
+        public static Piece redCannon1 = new Piece(22, xStart + 1 * width, yStart + 7 * width);
+        public static Piece redCannon2 = new Piece(23, xStart + 7 * width, yStart + 7 * width);
+        public static Piece redSoldier1 = new Piece(17, xStart, yStart + 6 * width);
+        public static Piece redSoldier2 = new Piece(18, xStart + 2 * width, yStart + 6 * width);
+        public static Piece redSoldier3 = new Piece(19, xStart + 4 * width, yStart + 6 * width);
+        public static Piece redSoldier4 = new Piece(20, xStart + 6 * width, yStart + 6 * width);
+        public Piece redSoldier5 = new Piece(21, xStart + 8 * width, yStart + 6 * width);
+        }
         drawGameBoard(ctx,xStart, yStart, width);
         //drawPiece(ctx, "general", "black", xStart + 4 * width, yStart)
         drawPiece(ctx, @Model.blackGeneral.ID, xStart + 4 * width, yStart, width);
         
-        drawPiece(ctx,@Model.blackGuard1.ID, @Model.blackGuard1.X,@Model.blackGuard1.Y, width);
+        drawPiece(ctx,@Model.blackGuard1.getID(), @Model.blackGuard1.X,@Model.blackGuard1.Y, width);
         drawPiece(ctx,@Model.blackGuard2.ID, @Model.blackGuard2.X, @Model.blackGuard2.Y, width);
         drawPiece(ctx,@Model.blackElephant1.ID,@Model.blackElephant1.X,@Model.blackElephant1.Y, width);
         drawPiece(ctx,@Model.blackElephant2.ID,@Model.blackElephant2.X,@Model.blackElephant2.Y, width);
@@ -439,27 +476,28 @@
         }
         */
         //var xCell = document.getElementById("eX");
-        /*
+        
         var counter=0;
         //do something on click
+
         canvas.addEventListener("click", function (evt) {
             var mousePos = getMousePos(canvas, evt);
             alert(mousePos.x + ',' + mousePos.y);
             //test for mouse click on a piece
-            a = mousePos.x - (Model.X);
-            a2 = a * a;
-            b = mousePos.y - Model.Y;
-            b2 = b * b;
-            if (Math.sqrt(a2 + b2) <= 20 && counter % 2 == 0) {
-                    counter++;
-                    canvas.addEventListener("mousemove", movePiece, false);
-            } else if (Math.sqrt(a2 + b2) <= 20 && counter % 2 == 1) {
-                    counter++;
-                    canvas.removeEventListener("mousemove", movePiece, false);
-            }
+            //a = mousePos.x - (Model.X);
+            //a2 = a * a;
+            //b = mousePos.y - Model.Y;
+            //b2 = b * b;
+            //if (Math.sqrt(a2 + b2) <= 20 && counter % 2 == 0) {
+                    //counter++;
+                    //canvas.addEventListener("mousemove", movePiece, false);
+            //} else if (Math.sqrt(a2 + b2) <= 20 && counter % 2 == 1) {
+                    //counter++;
+                    //canvas.removeEventListener("mousemove", movePiece, false);
+            //}
             //((mousePos.x - (300 + 4 * 50)) ^ 2 + (mousePos.y - 100) ^ 2) <= 10 ^ 2
         }, false);
-        
+                /*
         function movePiece(evt){
             var mousePos = getMousePos(canvas, evt);
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -500,7 +538,7 @@
             var y= evt.clientY - rect.top;
             cutCircle(ctx,x,y,20);
         }
-        
+        */
         //Get Mouse Position
         function getMousePos(canvas, evt) {
             var rect = canvas.getBoundingClientRect();
@@ -509,7 +547,8 @@
                 y: evt.clientY - rect.top
             };
         }
-       */
+       
+        //function checkInside(x,y,)
     </script>
     <p id="block1">I love you Sophia</p>
 </body>

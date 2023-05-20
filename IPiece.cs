@@ -4,7 +4,12 @@
     {
         double X { get; }
         double Y { get; }
-        int ID { get; }
+        char A { get; }
+        char C { get; }
+        double W { get; }
+        bool S { get; }
+
+        Tuple<double, double> Move(double x, double y);
 
     }
 }
