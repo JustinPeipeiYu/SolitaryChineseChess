@@ -17,7 +17,7 @@
     </style>
 </head>
 <body>
-    <canvas id="canvas" width="1000" height="600">
+    <canvas id="canvas" width="1000" height="700">
     </canvas>
 
     
@@ -50,20 +50,20 @@
             ctx.strokeStyle = "black";
             ctx.lineWidth = "4";
             for (let i = 0; i < 10; i++) {
-                drawHorizontalLine(ctx,x,x + 8 * 50, y + i * 45);
+                drawHorizontalLine(ctx,x,x + 8 * width, y + i * width);
             }
             for (let i = 1; i < 8; i++) {
-                drawVerticalLine(ctx,x + i * 50, y, y + 4 * 45);
-                drawVerticalLine(ctx,x + i * 50, y + 5 * 45, y + 9 * 45);          
+                drawVerticalLine(ctx,x + i * width, y, y + 4 * width);
+                drawVerticalLine(ctx,x + i * width, y + 5 * width, y + 9 * width);          
             }
-            drawVerticalLine(ctx,x, y, y + 9 * 45);
-            drawVerticalLine(ctx,x + 8 * 50, y, y + 9 * 45);
-            drawDiagonalLine(ctx,x + 3 * 50, x + 5 * 50, y, y + 2 * 45);
-            drawDiagonalLine(ctx,x + 3 * 50, x + 5 * 50, y + 2 * 45, y);
-            drawDiagonalLine(ctx,x + 3 * 50, x + 5 * 50, y + 7 * 45, y + 9 * 45);
-            drawDiagonalLine(ctx,x + 3 * 50, x + 5 * 50, y + 9 * 45, y + 7 * 45);
+            drawVerticalLine(ctx,x, y, y + 9 * width);
+            drawVerticalLine(ctx,x + 8 * width, y, y + 9 * width);
+            drawDiagonalLine(ctx,x + 3 * width, x + 5 * width, y, y + 2 * width);
+            drawDiagonalLine(ctx,x + 3 * width, x + 5 * width, y + 2 * width, y);
+            drawDiagonalLine(ctx,x + 3 * width, x + 5 * width, y + 7 * width, y + 9 * width);
+            drawDiagonalLine(ctx,x + 3 * width, x + 5 * width, y + 9 * width, y + 7 * width);
         }
-               
+        /*       
         function drawBlackGeneral(ctx,x, y) {
             drawPiece(ctx,x,y);
             ctx.fillStyle = "black";
@@ -237,154 +237,157 @@
             ctx.stroke();
             ctx.closePath();
         }
-        /*
-        function drawPiece(ctx,name, color, x, y) {
+        */
+        function drawPiece(ctx,id, x, y, width) {
             ctx.strokeStyle = "black";
             ctx.fillStyle = "#FFE5B4";
             ctx.beginPath();
             ctx.lineWidth = "4";
-            ctx.arc(x, y, 20, 0, Math.PI * 2, true);
+            ctx.arc(x, y, width/2.4, 0, Math.PI * 2, true);
             ctx.fill();
             ctx.stroke();
             ctx.closePath();
             ctx.lineWidth = "1";
-            ctx.font = "20px sans-serif";
+            ctx.font = "24px sans-serif";
             
-            if (color=="black"){
+            if (id<=16){
                 ctx.fillStyle = "black";
-                if (name=="general"){
-                    ctx.fillText("将", x - 10, y);
-                    ctx.strokeText("将", x - 10, y);
+                if (id==5){
+                    ctx.fillText("将", x - width/5, y);
+                    ctx.strokeText("将", x - width/5, y);
                     ctx.font = "10px sans-serif";
-                    ctx.fillText("jiàng", x - 10, y + 10);
-                    ctx.strokeText("jiàng", x - 10, y + 10);
-                } else if (name=="guard"){
-                    ctx.fillText("士", x - 10, y + 2);
-                    ctx.strokeText("士", x - 10, y + 2);
+                    ctx.fillText("general", x - width/3.5, y + width/4.5);
+                    ctx.strokeText("general", x - width/3.5, y + width/4.5);
+                } else if (id==4 || id==6){
+                    ctx.fillText("士", x - width / 5, y);
+                    ctx.strokeText("士", x - width / 5, y);
                     ctx.font = "10px sans-serif";
-                    ctx.fillText("shì", x - 5, y + 12);
-                    ctx.strokeText("shì", x - 5, y + 12);
-                } else if (name=="elephant"){
-                    ctx.fillText("象", x - 10, y);
-                    ctx.strokeText("象", x - 10, y);
+                    ctx.fillText("guard", x - width/4.5, y + width/4.5);
+                    ctx.strokeText("guard", x - width / 4.5, y + width / 4.5);
+                } else if (id==3 || id ==7){
+                    ctx.fillText("象", x - width / 5, y);
+                    ctx.strokeText("象", x - width / 5, y);
                     ctx.font = "10px sans-serif";
-                    ctx.fillText("xiàng", x - 10, y + 10);
-                    ctx.strokeText("xiàng", x - 10, y + 10);
-                } else if (name=="horse"){
-                    ctx.fillText("马", x - 10, y + 1);
-                    ctx.strokeText("马", x - 10, y + 1);
+                    ctx.fillText("elephant", x - width / 3.2, y + width / 4.5);
+                    ctx.strokeText("elephant", x - width / 3.2, y + width / 4.5);
+                } else if (id==2 || id == 8){
+                    ctx.fillText("马", x - width / 5, y);
+                    ctx.strokeText("马", x - width / 5, y);
                     ctx.font = "10px sans-serif";
-                    ctx.fillText("mǎ", x - 6, y + 12);
-                    ctx.strokeText("mǎ", x - 6, y + 12);
-                } else if (name=="rook"){
-                    ctx.fillText("车", x - 10, y + 1);
-                    ctx.strokeText("车", x - 10, y + 1);
+                    ctx.fillText("knight", x - width / 4.5, y + width / 4.5);
+                    ctx.strokeText("knight", x - width / 4.5, y + width / 4.5);
+                } else if (id==1 || id == 9){
+                    ctx.fillText("车", x - width / 5, y);
+                    ctx.strokeText("车", x - width / 5, y);
                     ctx.font = "10px sans-serif";
-                    ctx.fillText("jū", x - 4, y + 12);
-                    ctx.strokeText("jū", x - 4, y + 12);
-                } else if (name=="cannon"){
-                    ctx.fillText("砲", x - 10, y + 1);
-                    ctx.strokeText("砲", x - 10, y + 1);
+                    ctx.fillText("chariot", x - width / 4, y + width / 4.5);
+                    ctx.strokeText("chariot", x - width / 4, y + width / 4.5);
+                } else if (id == 10 || id == 11){
+                    ctx.fillText("砲", x - width / 5, y);
+                    ctx.strokeText("砲", x - width / 5, y);
                     ctx.font = "10px sans-serif";
-                    ctx.fillText("pào", x - 7, y + 12);
-                    ctx.strokeText("pào", x - 7, y + 12);
-                } else if (name=="soldier"){
-                    ctx.fillText("卒", x - 10, y + 1);
-                    ctx.strokeText("卒", x - 10, y + 1);
+                    ctx.fillText("catapult", x - width / 3.5, y + width / 4.5);
+                    ctx.strokeText("catapult", x - width / 3.5, y + width / 4.5);
+                } else if (id >= 12 && id <= 16){
+                    ctx.fillText("卒", x - width / 5, y);
+                    ctx.strokeText("卒", x - width / 5, y);
                     ctx.font = "10px sans-serif";
-                    ctx.fillText("zú", x - 4, y + 12);
-                    ctx.strokeText("zú", x - 4, y + 12);
+                    ctx.fillText("private", x - width / 4.5, y + width / 4.5);
+                    ctx.strokeText("private", x - width / 4.5, y + width / 4.5);
                 }
-            } else if (color=="red"){
+            } else if (id >=17 && id <= 32){
                 ctx.strokeStyle = "red";
                 ctx.fillStyle = "red";
-                if (name=="general"){
-                    ctx.fillText("帅", x - 10, y);
-                    ctx.strokeText("帅", x - 10, y);
+                if (id==28){
+                    ctx.fillText("帅", x - width / 5, y);
+                    ctx.strokeText("帅", x - width / 5, y);
                     ctx.font = "10px sans-serif";
-                    ctx.fillText("shuài", x - 10, y + 10);
-                    ctx.strokeText("shuài", x - 10, y + 10);
-                } else if (name == "guard"){
-                    ctx.fillText("仕", x - 10, y + 2);
-                    ctx.strokeText("仕", x - 10, y + 2);
+                    ctx.fillText("marshal", x - width / 3.5, y + width / 4.5);
+                    ctx.strokeText("marshal", x - width / 3.5, y + width / 4.5);
+                } else if (id==27 || id == 29){
+                    ctx.fillText("仕", x - width / 5, y);
+                    ctx.strokeText("仕", x - width / 5, y);
                     ctx.font = "10px sans-serif";
-                    ctx.fillText("shì", x - 5, y + 12);
-                    ctx.strokeText("shì", x - 5, y + 12);
-                } else if (name == "elephant"){
-                    ctx.fillText("相", x - 10, y);
-                    ctx.strokeText("相", x - 10, y);
+                    ctx.fillText("guard", x - width / 4.5, y + width / 4.5);
+                    ctx.strokeText("guard", x - width / 4.5, y + width / 4.5);
+                } else if (id == 26 || id==30){
+                    ctx.fillText("相", x - width / 5, y);
+                    ctx.strokeText("相", x - width / 5, y);
                     ctx.font = "10px sans-serif";
-                    ctx.fillText("xiàng", x - 10, y + 10);
-                    ctx.strokeText("xiàng", x - 10, y + 10);
-                } else if (name == "horse"){
-                    ctx.fillText("马", x - 10, y + 1);
-                    ctx.strokeText("马", x - 10, y + 1);
+                    ctx.fillText("elephant", x - width / 3.2, y + width / 4.5);
+                    ctx.strokeText("elephant", x - width / 3.2, y + width / 4.5);
+                } else if (id == 25 || id==31){
+                    ctx.fillText("马", x - width / 5, y);
+                    ctx.strokeText("马", x - width / 5, y);
                     ctx.font = "10px sans-serif";
-                    ctx.fillText("mǎ", x - 6, y + 12);
-                    ctx.strokeText("mǎ", x - 6, y + 12);
-                } else if (name == "rook"){
-                    ctx.fillText("车", x - 10, y + 1);
-                    ctx.strokeText("车", x - 10, y + 1);
+                    ctx.fillText("knight", x - width / 4.5, y + width / 4.5);
+                    ctx.strokeText("knight", x - width / 4.5, y + width / 4.5);
+                } else if (id==24 || id ==32){
+                    ctx.fillText("车", x - width / 5, y);
+                    ctx.strokeText("车", x - width / 5, y);
                     ctx.font = "10px sans-serif";
-                    ctx.fillText("jū", x - 4, y + 12);
-                    ctx.strokeText("jū", x - 4, y + 12);
-                } else if (name=="cannon"){
-                    ctx.fillText("炮", x - 10, y + 1);
-                    ctx.strokeText("炮", x - 10, y + 1);
+                    ctx.fillText("chariot", x - width / 4, y + width / 4.5);
+                    ctx.strokeText("chariot", x - width / 4, y + width / 4.5);
+                } else if (id==22 || id==23){
+                    ctx.fillText("炮", x - width / 5, y);
+                    ctx.strokeText("炮",x - width / 5, y);
                     ctx.font = "10px sans-serif";
-                    ctx.fillText("pào", x - 7, y + 12);
-                    ctx.strokeText("pào", x - 7, y + 12);
-                } else if (name=="soldier"){
-                    ctx.fillText("兵", x - 10, y + 1);
-                    ctx.strokeText("兵", x - 10, y + 1);
+                    ctx.fillText("cannon", x - width / 3.5, y + width / 4.5);
+                    ctx.strokeText("cannon", x - width / 3.5, y + width / 4.5);
+                } else if (id>=17 && id<=21){
+                    ctx.fillText("兵", x - width / 5, y);
+                    ctx.strokeText("兵", x - width / 5, y);
                     ctx.font = "10px sans-serif";
-                    ctx.fillText("bīng", x - 8, y + 12);
-                    ctx.strokeText("bīng", x - 8, y + 12);
+                    ctx.fillText("soldier", x - width / 4.5, y + width / 4.5);
+                    ctx.strokeText("soldier", x - width / 4.5, y + width / 4.5);
                 }
             }
-        }*/
+        }
         
         //Piece blackGeneral = new Piece("BlackGeneral", 300 + 4 * 50, 100);
        
         //draw static pieces and game board lines
-        var xStart = 300;
-        var yStart = 100;
-        drawGameBoard(ctx,xStart, yStart);
-        /*
-        drawPiece(ctx,@Model.blackGeneral.Name, @Model.blackGeneral.Color, @Model.blackGeneral.X,@Model.blackGeneral.Y);
-        drawPiece(ctx,@Model.blackGuard1.Name, @Model.blackGuard1.Color, @Model.blackGuard1.X,@Model.blackGuard1.Y);
-        drawPiece(ctx,@Model.blackGuard2.Name, @Model.blackGuard2.Color, @Model.blackGuard2.X, @Model.blackGuard2.Y);
-        drawPiece(ctx,@Model.blackElephant1.Name, @Model.blackElephant1.Color,@Model.blackElephant1.X,@Model.blackElephant1.Y);
-        drawPiece(ctx,@Model.blackElephant2.Name, @Model.blackElephant2.Color,@Model.blackElephant2.X,@Model.blackElephant2.Y);
-        drawPiece(ctx,@Model.blackHorse1.Name,@Model.blackHorse1.Color,@Model.blackHorse1.X,@Model.blackHorse1.Y);
-        drawPiece(ctx,@Model.blackHorse2.Name,@Model.blackHorse2.Color,@Model.blackHorse2.X,@Model.blackHorse2.Y);
-        drawPiece(ctx,@Model.blackRook1.Name, @Model.blackRook1.Color,@Model.blackRook1.X,@Model.blackRook1.Y);
-        drawPiece(ctx,@Model.blackRook2.Name,@Model.blackRook2.Color,@Model.blackRook2.X,@Model.blackRook2.Y);
-        drawPiece(ctx,@Model.blackCannon1.Name,@Model.blackCannon1.Color,@Model.blackCannon1.X,@Model.blackCannon1.Y);
-        drawPiece(ctx,@Model.blackCannon2.Name,@Model.blackCannon2.Color,@Model.blackCannon2.X,@Model.blackCannon2.Y);
-        drawPiece(ctx,@Model.blackSoldier1.Name,@Model.blackSoldier1.Color,@Model.blackSoldier1.X,@Model.blackSoldier1.Y);
-        drawPiece(ctx,@Model.blackSoldier2.Name,@Model.blackSoldier2.Color,@Model.blackSoldier2.X,@Model.blackSoldier2.Y);
-        drawPiece(ctx,@Model.blackSoldier3.Name,@Model.blackSoldier3.Color,@Model.blackSoldier3.X,@Model.blackSoldier3.Y);
-        drawPiece(ctx,@Model.blackSoldier4.Name, @Model.blackSoldier4.Color,@Model.blackSoldier4.X,@Model.blackSoldier4.Y);
-        drawPiece(ctx,@Model.blackSoldier5.Name,@Model.blackSoldier5.Color,@Model.blackSoldier5.X,@Model.blackSoldier5.Y);
+        var xStart = 200;
+        var yStart = 50;
+        var width = 60;
+        drawGameBoard(ctx,xStart, yStart, width);
+        //drawPiece(ctx, "general", "black", xStart + 4 * width, yStart)
+        drawPiece(ctx, @Model.blackGeneral.ID, xStart + 4 * width, yStart, width);
+        
+        drawPiece(ctx,@Model.blackGuard1.ID, @Model.blackGuard1.X,@Model.blackGuard1.Y, width);
+        drawPiece(ctx,@Model.blackGuard2.ID, @Model.blackGuard2.X, @Model.blackGuard2.Y, width);
+        drawPiece(ctx,@Model.blackElephant1.ID,@Model.blackElephant1.X,@Model.blackElephant1.Y, width);
+        drawPiece(ctx,@Model.blackElephant2.ID,@Model.blackElephant2.X,@Model.blackElephant2.Y, width);
+        drawPiece(ctx,@Model.blackHorse1.ID,@Model.blackHorse1.X,@Model.blackHorse1.Y, width);
+        drawPiece(ctx,@Model.blackHorse2.ID,@Model.blackHorse2.X,@Model.blackHorse2.Y, width);
+        drawPiece(ctx,@Model.blackRook1.ID,@Model.blackRook1.X,@Model.blackRook1.Y, width);
+        drawPiece(ctx,@Model.blackRook2.ID,@Model.blackRook2.X,@Model.blackRook2.Y, width);
+        drawPiece(ctx,@Model.blackCannon1.ID,@Model.blackCannon1.X,@Model.blackCannon1.Y, width);
+        drawPiece(ctx,@Model.blackCannon2.ID,@Model.blackCannon2.X,@Model.blackCannon2.Y, width);
+        drawPiece(ctx,@Model.blackSoldier1.ID,@Model.blackSoldier1.X,@Model.blackSoldier1.Y, width);
+        drawPiece(ctx,@Model.blackSoldier2.ID,@Model.blackSoldier2.X,@Model.blackSoldier2.Y, width);
+        drawPiece(ctx,@Model.blackSoldier3.ID,@Model.blackSoldier3.X,@Model.blackSoldier3.Y, width);
+        drawPiece(ctx,@Model.blackSoldier4.ID,@Model.blackSoldier4.X,@Model.blackSoldier4.Y, width);
+        drawPiece(ctx,@Model.blackSoldier5.ID,@Model.blackSoldier5.X,@Model.blackSoldier5.Y, width);
 
-        drawPiece(ctx,@Model.redGeneral.Name, @Model.redGeneral.Color, @Model.redGeneral.X,@Model.redGeneral.Y);
-        drawPiece(ctx,@Model.redGuard1.Name, @Model.redGuard1.Color, @Model.redGuard1.X,@Model.redGuard1.Y);
-        drawPiece(ctx,@Model.redGuard2.Name, @Model.redGuard2.Color, @Model.redGuard2.X, @Model.redGuard2.Y);
-        drawPiece(ctx,@Model.redElephant1.Name, @Model.redElephant1.Color,@Model.redElephant1.X,@Model.redElephant1.Y);
-        drawPiece(ctx,@Model.redElephant2.Name, @Model.redElephant2.Color,@Model.redElephant2.X,@Model.redElephant2.Y);
-        drawPiece(ctx,@Model.redHorse1.Name,@Model.redHorse1.Color,@Model.redHorse1.X,@Model.redHorse1.Y);
-        drawPiece(ctx,@Model.redHorse2.Name,@Model.redHorse2.Color,@Model.redHorse2.X,@Model.redHorse2.Y);
-        drawPiece(ctx,@Model.redRook1.Name, @Model.redRook1.Color,@Model.redRook1.X,@Model.redRook1.Y);
-        drawPiece(ctx,@Model.redRook2.Name,@Model.redRook2.Color,@Model.redRook2.X,@Model.redRook2.Y);
-        drawPiece(ctx,@Model.redCannon1.Name,@Model.redCannon1.Color,@Model.redCannon1.X,@Model.redCannon1.Y);
-        drawPiece(ctx,@Model.redCannon2.Name,@Model.redCannon2.Color,@Model.redCannon2.X,@Model.redCannon2.Y);
-        drawPiece(ctx,@Model.redSoldier1.Name,@Model.redSoldier1.Color,@Model.redSoldier1.X,@Model.redSoldier1.Y);
-        drawPiece(ctx,@Model.redSoldier2.Name,@Model.redSoldier2.Color,@Model.redSoldier2.X,@Model.redSoldier2.Y);
-        drawPiece(ctx,@Model.redSoldier3.Name,@Model.redSoldier3.Color,@Model.redSoldier3.X,@Model.redSoldier3.Y);
-        drawPiece(ctx,@Model.redSoldier4.Name, @Model.redSoldier4.Color,@Model.redSoldier4.X,@Model.redSoldier4.Y);
-        drawPiece(ctx,@Model.redSoldier5.Name,@Model.redSoldier5.Color,@Model.redSoldier5.X,@Model.redSoldier5.Y);
-        */
+        drawPiece(ctx,@Model.redGeneral.ID, @Model.redGeneral.X,@Model.redGeneral.Y, width);
+        drawPiece(ctx,@Model.redGuard1.ID, @Model.redGuard1.X,@Model.redGuard1.Y, width);
+        drawPiece(ctx,@Model.redGuard2.ID, @Model.redGuard2.X, @Model.redGuard2.Y, width);
+        drawPiece(ctx,@Model.redElephant1.ID,@Model.redElephant1.X,@Model.redElephant1.Y, width);
+        drawPiece(ctx,@Model.redElephant2.ID,@Model.redElephant2.X,@Model.redElephant2.Y, width);
+        drawPiece(ctx,@Model.redHorse1.ID,@Model.redHorse1.X,@Model.redHorse1.Y, width);
+        drawPiece(ctx,@Model.redHorse2.ID,@Model.redHorse2.X,@Model.redHorse2.Y, width);
+        drawPiece(ctx,@Model.redRook1.ID,@Model.redRook1.X,@Model.redRook1.Y, width);
+        drawPiece(ctx,@Model.redRook2.ID,@Model.redRook2.X,@Model.redRook2.Y, width);
+        drawPiece(ctx,@Model.redCannon1.ID,@Model.redCannon1.X,@Model.redCannon1.Y, width);
+        drawPiece(ctx,@Model.redCannon2.ID,@Model.redCannon2.X,@Model.redCannon2.Y, width);
+        drawPiece(ctx,@Model.redSoldier1.ID,@Model.redSoldier1.X,@Model.redSoldier1.Y, width);
+        drawPiece(ctx,@Model.redSoldier2.ID,@Model.redSoldier2.X,@Model.redSoldier2.Y, width);
+        drawPiece(ctx,@Model.redSoldier3.ID,@Model.redSoldier3.X,@Model.redSoldier3.Y, width);
+        drawPiece(ctx,@Model.redSoldier4.ID,@Model.redSoldier4.X,@Model.redSoldier4.Y, width);
+        drawPiece(ctx,@Model.redSoldier5.ID,@Model.redSoldier5.X,@Model.redSoldier5.Y, width);
+        
+        /*
         drawBlackGeneral(ctx,300 + 4 * 50, 100);
         drawRedGeneral(ctx,300 + 4 * 50, 100 + 9 * 45);
         
@@ -434,7 +437,7 @@
             
             drawRedSoldier(ctx,300 + i * 50, 100 + 6 * 45);
         }
-
+        */
         //var xCell = document.getElementById("eX");
         /*
         var counter=0;

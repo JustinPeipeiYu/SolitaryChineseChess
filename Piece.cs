@@ -2,16 +2,13 @@
 {
     public class Piece: IPiece
     {
-        public string Name { get; set; }
+        public int ID { get; set; }
         public double X { get; set; }
         public double Y { get; set; }
 
-        public string Color { get; set; }
-
-        public Piece(string name, string color, double x, double y)
+        public Piece(int id, double x, double y)
         {
-            Color = color;
-            Name = name;
+            ID = id;
             X = x;
             Y = y;
         }

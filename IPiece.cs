@@ -4,9 +4,7 @@
     {
         double X { get; }
         double Y { get; }
-        string Name { get; }
-
-        string Color { get; }
+        int ID { get; }
 
     }
 }
