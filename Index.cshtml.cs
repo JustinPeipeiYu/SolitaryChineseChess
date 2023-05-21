@@ -19,38 +19,9 @@ namespace ChineseChessXiangQi.Pages
         public static double yStart = 50;
         public static double width = 60;
 
-        public General bGeneral = new General(xStart + 4 * width, yStart, width, 1);
-        public General rGeneral = new General(xStart + 4 * width, yStart + 9 * width,width, 0);
-        public Guard bGuard1 = new Guard(xStart + 3 * width, yStart,width, 1);
-        public Guard bGuard2 = new Guard(xStart + 5 * width, yStart,width,1);
-        public Guard rGuard1 = new Guard(xStart + 3 * width, yStart + 9 * width, width, 0);
-        public Guard rGuard2 = new Guard(xStart + 5 * width, yStart + 9 * width,width,0);
-        public Elephant bElephant1 = new Elephant(xStart + 2 * width, yStart, width, 1);
-        public Elephant bElephant2 = new Elephant(xStart + 6 * width, yStart, width, 1);
-        public Elephant rElephant1 = new Elephant(xStart + 2 * width, yStart + 9 * width,width,0);
-        public Elephant rElephant2 = new Elephant(xStart + 6 * width, yStart + 9 * width, width, 0);
-        public Knight bKnight1 = new Knight(xStart + 1 * width, yStart,width,1);
-        public Knight bKnight2 = new Knight(xStart + 7 * width, yStart, width,1);
-        public Knight rKnight1 = new Knight(xStart + 1 * width, yStart + 9 * width,width,0);
-        public Knight rKnight2 = new Knight(xStart + 7 * width, yStart + 9 * width,width,0);
-        public Chariot bChariot1 = new Chariot(xStart, yStart, width, 1);
-        public Chariot bChariot2 = new Chariot(xStart + 8 * width, yStart, width, 1);
-        public Chariot rChariot1 = new Chariot(xStart, yStart + 9 * width, width, 0);
-        public Chariot rChariot2 = new Chariot(xStart + 8 * width, yStart + 9 * width, width,0);
-        public Cannon bCannon1 = new Cannon(xStart + 1 * width, yStart + 2 * width, width, 1);
-        public Cannon bCannon2 = new Cannon(xStart + 7 * width, yStart + 2 * width, width, 1);
-        public Cannon rCannon1 = new Cannon(xStart + 1 * width, yStart + 7 * width, width, 0);
-        public Cannon rCannon2 = new Cannon(xStart + 7 * width, yStart + 7 * width, width, 0);
-        public Soldier bSoldier1 = new Soldier(xStart + 0 * width, yStart + 3 * width, width, 1);
-        public Soldier bSoldier2 = new Soldier(xStart + 2 * width, yStart + 3 * width, width, 1);
-        public Soldier bSoldier3 = new Soldier(xStart + 4 * width, yStart + 3 * width, width, 1);
-        public Soldier bSoldier4 = new Soldier(xStart + 6 * width, yStart + 3 * width, width, 1);
-        public Soldier bSoldier5 = new Soldier(xStart + 8 * width, yStart + 3 * width, width, 1);
-        public Soldier rSoldier1 = new Soldier(xStart + 0 * width, yStart + 6 * width, width, 0);
-        public Soldier rSoldier2 = new Soldier(xStart + 2 * width, yStart + 6 * width, width, 0);
-        public Soldier rSoldier3 = new Soldier(xStart + 4 * width, yStart + 6 * width, width, 0);
-        public Soldier rSoldier4 = new Soldier(xStart + 6 * width, yStart + 6 * width, width, 0);
-        public Soldier rSoldier5 = new Soldier(xStart + 8 * width, yStart + 6 * width, width, 0);
+        public List<Position> positions = new List<Position>();
+        public List<Piece> pieces = new List<Piece>();
+
         /*
         public List<Piece> blackPieces = new List<Piece> { blackGeneral, blackGuard1, blackGuard2, blackElephant1, 
             blackElephant2, blackHorse1, blackHorse2, blackRook1, blackRook2, blackCannon1, blackCannon2, 
@@ -72,8 +43,45 @@ namespace ChineseChessXiangQi.Pages
         */
         public void OnGet()
         {
-            
-            
+            for (int i = 1; i <= 10; i++)
+            {
+                for (int j = 1;j <= 9; j++) 
+                {
+                    positions.Add(new Position(xStart + (j-1)*width, yStart + (i-1)*width, width,i,j));
+                }
+            }
+            pieces.Add(new General(xStart + 4 * width, yStart, width, 1, 1));
+            pieces.Add(new General(xStart + 4 * width, yStart + 9 * width, width, 0, 1));
+            pieces.Add(new Guard(xStart + 3 * width, yStart, width, 1,6));
+            pieces.Add(new Guard(xStart + 5 * width, yStart, width, 1,6));
+            pieces.Add(new Guard(xStart + 3 * width, yStart + 9 * width, width, 0,6));
+            pieces.Add(new Guard(xStart + 5 * width, yStart + 9 * width, width, 0,6));
+            pieces.Add(new Elephant(xStart + 2 * width, yStart, width, 1,5));
+            pieces.Add(new Elephant(xStart + 6 * width, yStart, width, 1,5));
+            pieces.Add(new Elephant(xStart + 2 * width, yStart + 9 * width, width, 0,5));
+            pieces.Add(new Elephant(xStart + 6 * width, yStart + 9 * width, width, 0,5));
+            pieces.Add(new Knight(xStart + 1 * width, yStart, width, 1,4));
+            pieces.Add(new Knight(xStart + 7 * width, yStart, width, 1,4));
+            pieces.Add(new Knight(xStart + 1 * width, yStart + 9 * width, width, 0,4));
+            pieces.Add(new Knight(xStart + 7 * width, yStart + 9 * width, width, 0,4));
+            pieces.Add(new Chariot(xStart, yStart, width, 1,2));
+            pieces.Add(new Chariot(xStart + 8 * width, yStart, width, 1,2));
+            pieces.Add(new Chariot(xStart, yStart + 9 * width, width, 0,2));
+            pieces.Add(new Chariot(xStart + 8 * width, yStart + 9 * width, width, 0,2));
+            pieces.Add(new Cannon(xStart + 1 * width, yStart + 2 * width, width, 1,3));
+            pieces.Add(new Cannon(xStart + 7 * width, yStart + 2 * width, width, 1,3));
+            pieces.Add(new Cannon(xStart + 1 * width, yStart + 7 * width, width, 0,3));
+            pieces.Add(new Cannon(xStart + 7 * width, yStart + 7 * width, width, 0,3));
+            pieces.Add(new Soldier(xStart + 0 * width, yStart + 3 * width, width, 1,7));
+            pieces.Add(new Soldier(xStart + 2 * width, yStart + 3 * width, width, 1,7));
+            pieces.Add(new Soldier(xStart + 4 * width, yStart + 3 * width, width, 1,7));
+            pieces.Add(new Soldier(xStart + 6 * width, yStart + 3 * width, width, 1,7));
+            pieces.Add(new Soldier(xStart + 8 * width, yStart + 3 * width, width, 1,7));
+            pieces.Add(new Soldier(xStart + 0 * width, yStart + 6 * width, width, 0,7));
+            pieces.Add(new Soldier(xStart + 2 * width, yStart + 6 * width, width, 0,7));
+            pieces.Add(new Soldier(xStart + 4 * width, yStart + 6 * width, width, 0,7));
+            pieces.Add(new Soldier(xStart + 6 * width, yStart + 6 * width, width, 0,7));
+            pieces.Add(new Soldier(xStart + 8 * width, yStart + 6 * width, width, 0,7));
         }
     }
 }

@@ -7,6 +7,7 @@ namespace ChineseChessXiangQi.Pages
     public class Piece: Board
     {
         public int C { get; set; }
+        public int N { get; set; }
 
     }
 }
