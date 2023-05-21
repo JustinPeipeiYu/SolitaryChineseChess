@@ -24,7 +24,10 @@
     <script>
         
         var ctx = document.getElementById("canvas").getContext("2d");
-        
+        var xStart = 200;
+        var yStart = 50;
+        var width = 60;
+
         function drawHorizontalLine(ctx,x1, x2, y) {
             ctx.beginPath();
             ctx.moveTo(x1, y);
@@ -238,7 +241,8 @@
             ctx.closePath();
         }
         */
-        function drawPiece(ctx,id, x, y, width) {
+
+        function drawPiece(ctx,x,y,width){
             ctx.strokeStyle = "black";
             ctx.fillStyle = "#FFE5B4";
             ctx.beginPath();
@@ -247,6 +251,258 @@
             ctx.fill();
             ctx.stroke();
             ctx.closePath();
+        }
+
+        function drawGeneral(ctx,x,y,width,c){
+            drawPiece(ctx,x,y,width);
+            ctx.lineWidth = "1";
+            ctx.font = "24px sans-serif";
+            if (c==1){
+                ctx.fillStyle = "black";
+                ctx.fillText("将", x - width/5, y);
+                ctx.strokeText("将", x - width/5, y);
+                ctx.font = "10px sans-serif";
+                ctx.fillText("general", x - width/3.5, y + width/4.5);
+                ctx.strokeText("general", x - width/3.5, y + width/4.5);
+            } else {
+                ctx.strokeStyle = "red";
+                ctx.fillStyle = "red";
+                ctx.fillText("帅", x - width / 5, y);
+                ctx.strokeText("帅", x - width / 5, y);
+                ctx.font = "10px sans-serif";
+                ctx.fillText("marshal", x - width / 3.5, y + width / 4.5);
+                ctx.strokeText("marshal", x - width / 3.5, y + width / 4.5);
+            }
+        }
+
+        function drawGuard(ctx,x,y,width,c){
+            drawPiece(ctx,x,y,width);
+            ctx.lineWidth = "1";
+            ctx.font = "24px sans-serif";
+            if (c==1){
+                ctx.fillStyle = "black";
+                ctx.fillText("士", x - width / 5, y);
+                ctx.strokeText("士", x - width / 5, y);
+                ctx.font = "10px sans-serif";
+                ctx.fillText("guard", x - width/4.5, y + width/4.5);
+                ctx.strokeText("guard", x - width / 4.5, y + width / 4.5);
+            } else {
+                ctx.strokeStyle = "red";
+                ctx.fillStyle = "red";
+                ctx.fillText("仕", x - width / 5, y);
+                ctx.strokeText("仕", x - width / 5, y);
+                ctx.font = "10px sans-serif";
+                ctx.fillText("guard", x - width / 4.5, y + width / 4.5);
+                ctx.strokeText("guard", x - width / 4.5, y + width / 4.5);
+            }
+        }
+
+        function drawElephant(ctx,x,y,width,c){
+            drawPiece(ctx,x,y,width);
+            ctx.lineWidth = "1";
+            ctx.font = "24px sans-serif";
+            if (c==1){
+                ctx.fillStyle = "black";
+                ctx.fillText("象", x - width / 5, y);
+                ctx.strokeText("象", x - width / 5, y);
+                ctx.font = "10px sans-serif";
+                ctx.fillText("elephant", x - width / 3.2, y + width / 4.5);
+                ctx.strokeText("elephant", x - width / 3.2, y + width / 4.5);
+            } else {
+                ctx.strokeStyle = "red";
+                ctx.fillStyle = "red";
+                ctx.fillText("相", x - width / 5, y);
+                ctx.strokeText("相", x - width / 5, y);
+                ctx.font = "10px sans-serif";
+                ctx.fillText("elephant", x - width / 3.2, y + width / 4.5);
+                ctx.strokeText("elephant", x - width / 3.2, y + width / 4.5);
+            } 
+        }
+
+        function drawKnight(ctx,x,y,width,c){
+            drawPiece(ctx,x,y,width);
+            ctx.lineWidth = "1";
+            ctx.font = "24px sans-serif";
+            if (c==1){
+                ctx.fillStyle = "black";
+                ctx.fillText("马", x - width / 5, y);
+                ctx.strokeText("马", x - width / 5, y);
+                ctx.font = "10px sans-serif";
+                ctx.fillText("knight", x - width / 4.5, y + width / 4.5);
+                ctx.strokeText("knight", x - width / 4.5, y + width / 4.5);
+            }else{
+                ctx.strokeStyle = "red";
+                ctx.fillStyle = "red";
+                ctx.fillText("马", x - width / 5, y);
+                ctx.strokeText("马", x - width / 5, y);
+                ctx.font = "10px sans-serif";
+                ctx.fillText("knight", x - width / 4.5, y + width / 4.5);
+                ctx.strokeText("knight", x - width / 4.5, y + width / 4.5);
+            }
+        }
+
+        function drawChariot(ctx,x,y,width,c){
+            drawPiece(ctx,x,y,width);
+            ctx.lineWidth = "1";
+            ctx.font = "24px sans-serif";
+            if (c==1){
+                ctx.fillStyle = "black";
+                ctx.fillText("车", x - width / 5, y);
+                ctx.strokeText("车", x - width / 5, y);
+                ctx.font = "10px sans-serif";
+                ctx.fillText("chariot", x - width / 4, y + width / 4.5);
+                ctx.strokeText("chariot", x - width / 4, y + width / 4.5);
+            } else {
+                ctx.strokeStyle = "red";
+                ctx.fillStyle = "red";
+                ctx.fillText("车", x - width / 5, y);
+                ctx.strokeText("车", x - width / 5, y);
+                ctx.font = "10px sans-serif";
+                ctx.fillText("chariot", x - width / 4, y + width / 4.5);
+                ctx.strokeText("chariot", x - width / 4, y + width / 4.5);
+            }
+        }
+
+        function drawCannon(ctx,x,y,width,c){
+            drawPiece(ctx,x,y,width);
+            ctx.lineWidth = "1";
+            ctx.font = "24px sans-serif";
+            if (c==1){
+                ctx.fillStyle = "black";
+                ctx.fillText("砲", x - width / 5, y);
+                ctx.strokeText("砲", x - width / 5, y);
+                ctx.font = "10px sans-serif";
+                ctx.fillText("catapult", x - width / 3.5, y + width / 4.5);
+                ctx.strokeText("catapult", x - width / 3.5, y + width / 4.5);
+            }else {
+                ctx.strokeStyle = "red";
+                ctx.fillStyle = "red";
+                ctx.fillText("炮", x - width / 5, y);
+                ctx.strokeText("炮",x - width / 5, y);
+                ctx.font = "10px sans-serif";
+                ctx.fillText("cannon", x - width / 3.5, y + width / 4.5);
+                ctx.strokeText("cannon", x - width / 3.5, y + width / 4.5);
+            }
+        }
+
+        function drawSoldier(ctx,x,y,width,c){
+            drawPiece(ctx,x,y,width);
+            ctx.lineWidth = "1";
+            ctx.font = "24px sans-serif";
+            if (c==1){
+                ctx.fillStyle = "black";
+                ctx.fillText("卒", x - width / 5, y);
+                ctx.strokeText("卒", x - width / 5, y);
+                ctx.font = "10px sans-serif";
+                ctx.fillText("private", x - width / 4.5, y + width / 4.5);
+                ctx.strokeText("private", x - width / 4.5, y + width / 4.5);
+            }else {
+                ctx.strokeStyle = "red";
+                ctx.fillStyle = "red";
+                ctx.fillText("兵", x - width / 5, y);
+                ctx.strokeText("兵", x - width / 5, y);
+                ctx.font = "10px sans-serif";
+                ctx.fillText("soldier", x - width / 4.5, y + width / 4.5);
+                ctx.strokeText("soldier", x - width / 4.5, y + width / 4.5);
+            }
+        }
+        /*
+            ctx.lineWidth = "1";
+            ctx.font = "24px sans-serif";
+            if (c='b'){
+                ctx.fillStyle = "black";
+                if (type=='General'){
+                    ctx.fillText("将", x - width/5, y);
+                    ctx.strokeText("将", x - width/5, y);
+                    ctx.font = "10px sans-serif";
+                    ctx.fillText("general", x - width/3.5, y + width/4.5);
+                    ctx.strokeText("general", x - width/3.5, y + width/4.5);
+                } else if (type==Guard){
+                    ctx.fillText("士", x - width / 5, y);
+                    ctx.strokeText("士", x - width / 5, y);
+                    ctx.font = "10px sans-serif";
+                    ctx.fillText("guard", x - width/4.5, y + width/4.5);
+                    ctx.strokeText("guard", x - width / 4.5, y + width / 4.5);
+                } else if (type == Elephant){
+                    ctx.fillText("象", x - width / 5, y);
+                    ctx.strokeText("象", x - width / 5, y);
+                    ctx.font = "10px sans-serif";
+                    ctx.fillText("elephant", x - width / 3.2, y + width / 4.5);
+                    ctx.strokeText("elephant", x - width / 3.2, y + width / 4.5);
+                } else if (type==Knight){
+                    ctx.fillText("马", x - width / 5, y);
+                    ctx.strokeText("马", x - width / 5, y);
+                    ctx.font = "10px sans-serif";
+                    ctx.fillText("knight", x - width / 4.5, y + width / 4.5);
+                    ctx.strokeText("knight", x - width / 4.5, y + width / 4.5);
+                } else if (type==Chariot){
+                    ctx.fillText("车", x - width / 5, y);
+                    ctx.strokeText("车", x - width / 5, y);
+                    ctx.font = "10px sans-serif";
+                    ctx.fillText("chariot", x - width / 4, y + width / 4.5);
+                    ctx.strokeText("chariot", x - width / 4, y + width / 4.5);
+                } else if (type == Cannon){
+                    ctx.fillText("砲", x - width / 5, y);
+                    ctx.strokeText("砲", x - width / 5, y);
+                    ctx.font = "10px sans-serif";
+                    ctx.fillText("catapult", x - width / 3.5, y + width / 4.5);
+                    ctx.strokeText("catapult", x - width / 3.5, y + width / 4.5);
+                } else if (type == Soldier){
+                    ctx.fillText("卒", x - width / 5, y);
+                    ctx.strokeText("卒", x - width / 5, y);
+                    ctx.font = "10px sans-serif";
+                    ctx.fillText("private", x - width / 4.5, y + width / 4.5);
+                    ctx.strokeText("private", x - width / 4.5, y + width / 4.5);
+                } 
+            }else{
+                ctx.strokeStyle = "red";
+                ctx.fillStyle = "red";
+                if (type=='General'){
+                    ctx.fillText("帅", x - width / 5, y);
+                    ctx.strokeText("帅", x - width / 5, y);
+                    ctx.font = "10px sans-serif";
+                    ctx.fillText("marshal", x - width / 3.5, y + width / 4.5);
+                    ctx.strokeText("marshal", x - width / 3.5, y + width / 4.5);
+                }else if (type==Guard){
+                    ctx.fillText("仕", x - width / 5, y);
+                    ctx.strokeText("仕", x - width / 5, y);
+                    ctx.font = "10px sans-serif";
+                    ctx.fillText("guard", x - width / 4.5, y + width / 4.5);
+                    ctx.strokeText("guard", x - width / 4.5, y + width / 4.5);
+                }else if (type==Elephant){
+                    ctx.fillText("相", x - width / 5, y);
+                    ctx.strokeText("相", x - width / 5, y);
+                    ctx.font = "10px sans-serif";
+                    ctx.fillText("elephant", x - width / 3.2, y + width / 4.5);
+                    ctx.strokeText("elephant", x - width / 3.2, y + width / 4.5);
+                }else if (type==Knight){
+                    ctx.fillText("马", x - width / 5, y);
+                    ctx.strokeText("马", x - width / 5, y);
+                    ctx.font = "10px sans-serif";
+                    ctx.fillText("knight", x - width / 4.5, y + width / 4.5);
+                    ctx.strokeText("knight", x - width / 4.5, y + width / 4.5);
+                }else if (type ==Chariot){
+                    ctx.fillText("车", x - width / 5, y);
+                    ctx.strokeText("车", x - width / 5, y);
+                    ctx.font = "10px sans-serif";
+                    ctx.fillText("chariot", x - width / 4, y + width / 4.5);
+                    ctx.strokeText("chariot", x - width / 4, y + width / 4.5);
+                }else if (type==Cannon){
+                    ctx.fillText("炮", x - width / 5, y);
+                    ctx.strokeText("炮",x - width / 5, y);
+                    ctx.font = "10px sans-serif";
+                    ctx.fillText("cannon", x - width / 3.5, y + width / 4.5);
+                    ctx.strokeText("cannon", x - width / 3.5, y + width / 4.5);
+                }else if (type==Soldier){
+                    ctx.fillText("兵", x - width / 5, y);
+                    ctx.strokeText("兵", x - width / 5, y);
+                    ctx.font = "10px sans-serif";
+                    ctx.fillText("soldier", x - width / 4.5, y + width / 4.5);
+                    ctx.strokeText("soldier", x - width / 4.5, y + width / 4.5);
+                }
+            }
+        }*/
+        /*
             ctx.lineWidth = "1";
             ctx.font = "24px sans-serif";
             
@@ -343,86 +599,48 @@
                 }
             }
         }
-        
+        */
         //Piece blackGeneral = new Piece("BlackGeneral", 300 + 4 * 50, 100);
        
         //draw static pieces and game board lines
-        
-
-        @{
-            double xStart = 200;
-        double yStart = 50;
-        double width = 60;
+       
             //all 32 game pieces
-        public static Piece blackGeneral = new Piece(5, xStart + 4 * width, yStart);
-        public static Piece blackGuard1 = new Piece(4, xStart + 3 * width, yStart);
-        public static Piece blackGuard2 = new Piece(6, xStart + 5 * width, yStart);
-        public static Piece blackElephant1 = new Piece(3, xStart + 2 * width, yStart);
-        public static Piece blackElephant2 = new Piece(7, xStart + 6 * width, yStart);
-        public static Piece blackHorse1 = new Piece(2, xStart + 1 * width, yStart);
-        public static Piece blackHorse2 = new Piece(8, xStart + 7 * width, yStart);
-        public static Piece blackRook1 = new Piece(1, xStart, yStart);
-        public static Piece blackRook2 = new Piece(9, xStart + 8 * width, yStart);
-        public static Piece blackCannon1 = new Piece(10, xStart + 1 * width, yStart + 2 * width);
-        public static Piece blackCannon2 = new Piece(11, xStart + 7 * width, yStart + 2 * width);
-        public static Piece blackSoldier1 = new Piece(12, xStart, yStart + 3 * width);
-        public static Piece blackSoldier2 = new Piece(13, xStart + 2 * width, yStart + 3 * width);
-        public static Piece blackSoldier3 = new Piece(14, xStart + 4 * width, yStart + 3 * width);
-        public static Piece blackSoldier4 = new Piece(15, xStart + 6 * width, yStart + 3 * width);
-        public static Piece blackSoldier5 = new Piece(16, xStart + 8 * width, yStart + 3 * width);
-        public static Piece redGeneral = new Piece(28, xStart + 4 * width, yStart + 9 * width);
-        public static Piece redGuard1 = new Piece(27, xStart + 3 * width, yStart + 9 * width);
-        public static Piece redGuard2 = new Piece(29, xStart + 5 * width, yStart + 9 * width);
-        public static Piece redElephant1 = new Piece(26, xStart + 2 * width, yStart + 9 * width);
-        public static Piece redElephant2 = new Piece(30, xStart + 6 * width, yStart + 9 * width);
-        public static Piece redHorse1 = new Piece(25, xStart + 1 * width, yStart + 9 * width);
-        public static Piece redHorse2 = new Piece(31, xStart + 7 * width, yStart + 9 * width);
-        public static Piece redRook1 = new Piece(24, xStart, yStart + 9 * width);
-        public static Piece redRook2 = new Piece(32, xStart + 8 * width, yStart + 9 * width);
-        public static Piece redCannon1 = new Piece(22, xStart + 1 * width, yStart + 7 * width);
-        public static Piece redCannon2 = new Piece(23, xStart + 7 * width, yStart + 7 * width);
-        public static Piece redSoldier1 = new Piece(17, xStart, yStart + 6 * width);
-        public static Piece redSoldier2 = new Piece(18, xStart + 2 * width, yStart + 6 * width);
-        public static Piece redSoldier3 = new Piece(19, xStart + 4 * width, yStart + 6 * width);
-        public static Piece redSoldier4 = new Piece(20, xStart + 6 * width, yStart + 6 * width);
-        public Piece redSoldier5 = new Piece(21, xStart + 8 * width, yStart + 6 * width);
-        }
+        
         drawGameBoard(ctx,xStart, yStart, width);
         //drawPiece(ctx, "general", "black", xStart + 4 * width, yStart)
-        drawPiece(ctx, @Model.blackGeneral.ID, xStart + 4 * width, yStart, width);
+        drawGeneral(ctx, @Model.bGeneral.X, @Model.bGeneral.Y, @Model.bGeneral.W, @Model.bGeneral.C);
+        drawGuard(ctx,@Model.bGuard1.X,@Model.bGuard1.Y, @Model.bGuard1.W,@Model.bGuard1.C);
+        drawGuard(ctx,@Model.bGuard2.X, @Model.bGuard2.Y, @Model.bGuard2.W, @Model.bGuard2.C);
+        drawElephant(ctx,@Model.bElephant1.X,@Model.bElephant1.Y, @Model.bElephant1.W,@Model.bElephant1.C);
+        drawElephant(ctx,@Model.bElephant2.X,@Model.bElephant2.Y, @Model.bElephant2.W,@Model.bElephant2.C);
+        drawKnight(ctx,@Model.bKnight1.X,@Model.bKnight1.Y, @Model.bKnight1.W,@Model.bElephant2.C);
+        drawKnight(ctx,@Model.bKnight2.X,@Model.bKnight2.Y,@Model.bKnight2.W, @Model.bKnight2.C);
+        drawChariot(ctx,@Model.bChariot1.X,@Model.bChariot1.Y,@Model.bChariot1.W, @Model.bChariot1.C);
+        drawChariot(ctx,@Model.bChariot2.X,@Model.bChariot2.Y, @Model.bChariot2.W,@Model.bChariot2.C);
+        drawCannon(ctx,@Model.bCannon1.X,@Model.bCannon1.Y, @Model.bCannon1.W,@Model.bCannon1.C);
+        drawCannon(ctx,@Model.bCannon2.X,@Model.bCannon2.Y, @Model.bCannon2.W,@Model.bCannon2.C);
+        drawSoldier(ctx,@Model.bSoldier1.X,@Model.bSoldier1.Y, @Model.bSoldier1.W,@Model.bSoldier1.C);
+        drawSoldier(ctx,@Model.bSoldier2.X,@Model.bSoldier2.Y, @Model.bSoldier2.W,@Model.bSoldier2.C);
+        drawSoldier(ctx,@Model.bSoldier3.X,@Model.bSoldier3.Y, @Model.bSoldier3.W,@Model.bSoldier3.C);
+        drawSoldier(ctx,@Model.bSoldier4.X,@Model.bSoldier4.Y, @Model.bSoldier4.W,@Model.bSoldier4.C);
+        drawSoldier(ctx,@Model.bSoldier5.X,@Model.bSoldier5.Y, @Model.bSoldier5.W,@Model.bSoldier5.C);
         
-        drawPiece(ctx,@Model.blackGuard1.getID(), @Model.blackGuard1.X,@Model.blackGuard1.Y, width);
-        drawPiece(ctx,@Model.blackGuard2.ID, @Model.blackGuard2.X, @Model.blackGuard2.Y, width);
-        drawPiece(ctx,@Model.blackElephant1.ID,@Model.blackElephant1.X,@Model.blackElephant1.Y, width);
-        drawPiece(ctx,@Model.blackElephant2.ID,@Model.blackElephant2.X,@Model.blackElephant2.Y, width);
-        drawPiece(ctx,@Model.blackHorse1.ID,@Model.blackHorse1.X,@Model.blackHorse1.Y, width);
-        drawPiece(ctx,@Model.blackHorse2.ID,@Model.blackHorse2.X,@Model.blackHorse2.Y, width);
-        drawPiece(ctx,@Model.blackRook1.ID,@Model.blackRook1.X,@Model.blackRook1.Y, width);
-        drawPiece(ctx,@Model.blackRook2.ID,@Model.blackRook2.X,@Model.blackRook2.Y, width);
-        drawPiece(ctx,@Model.blackCannon1.ID,@Model.blackCannon1.X,@Model.blackCannon1.Y, width);
-        drawPiece(ctx,@Model.blackCannon2.ID,@Model.blackCannon2.X,@Model.blackCannon2.Y, width);
-        drawPiece(ctx,@Model.blackSoldier1.ID,@Model.blackSoldier1.X,@Model.blackSoldier1.Y, width);
-        drawPiece(ctx,@Model.blackSoldier2.ID,@Model.blackSoldier2.X,@Model.blackSoldier2.Y, width);
-        drawPiece(ctx,@Model.blackSoldier3.ID,@Model.blackSoldier3.X,@Model.blackSoldier3.Y, width);
-        drawPiece(ctx,@Model.blackSoldier4.ID,@Model.blackSoldier4.X,@Model.blackSoldier4.Y, width);
-        drawPiece(ctx,@Model.blackSoldier5.ID,@Model.blackSoldier5.X,@Model.blackSoldier5.Y, width);
-
-        drawPiece(ctx,@Model.redGeneral.ID, @Model.redGeneral.X,@Model.redGeneral.Y, width);
-        drawPiece(ctx,@Model.redGuard1.ID, @Model.redGuard1.X,@Model.redGuard1.Y, width);
-        drawPiece(ctx,@Model.redGuard2.ID, @Model.redGuard2.X, @Model.redGuard2.Y, width);
-        drawPiece(ctx,@Model.redElephant1.ID,@Model.redElephant1.X,@Model.redElephant1.Y, width);
-        drawPiece(ctx,@Model.redElephant2.ID,@Model.redElephant2.X,@Model.redElephant2.Y, width);
-        drawPiece(ctx,@Model.redHorse1.ID,@Model.redHorse1.X,@Model.redHorse1.Y, width);
-        drawPiece(ctx,@Model.redHorse2.ID,@Model.redHorse2.X,@Model.redHorse2.Y, width);
-        drawPiece(ctx,@Model.redRook1.ID,@Model.redRook1.X,@Model.redRook1.Y, width);
-        drawPiece(ctx,@Model.redRook2.ID,@Model.redRook2.X,@Model.redRook2.Y, width);
-        drawPiece(ctx,@Model.redCannon1.ID,@Model.redCannon1.X,@Model.redCannon1.Y, width);
-        drawPiece(ctx,@Model.redCannon2.ID,@Model.redCannon2.X,@Model.redCannon2.Y, width);
-        drawPiece(ctx,@Model.redSoldier1.ID,@Model.redSoldier1.X,@Model.redSoldier1.Y, width);
-        drawPiece(ctx,@Model.redSoldier2.ID,@Model.redSoldier2.X,@Model.redSoldier2.Y, width);
-        drawPiece(ctx,@Model.redSoldier3.ID,@Model.redSoldier3.X,@Model.redSoldier3.Y, width);
-        drawPiece(ctx,@Model.redSoldier4.ID,@Model.redSoldier4.X,@Model.redSoldier4.Y, width);
-        drawPiece(ctx,@Model.redSoldier5.ID,@Model.redSoldier5.X,@Model.redSoldier5.Y, width);
+        drawGeneral(ctx, @Model.rGeneral.X, @Model.rGeneral.Y, @Model.rGeneral.W, @Model.rGeneral.C);
+        drawGuard(ctx,@Model.rGuard1.X,@Model.rGuard1.Y, @Model.rGuard1.W,@Model.rGuard1.C);
+        drawGuard(ctx,@Model.rGuard2.X, @Model.rGuard2.Y, @Model.rGuard2.W, @Model.rGuard2.C);
+        drawElephant(ctx,@Model.rElephant1.X,@Model.rElephant1.Y, @Model.rElephant1.W,@Model.rElephant1.C);
+        drawElephant(ctx,@Model.rElephant2.X,@Model.rElephant2.Y, @Model.rElephant2.W,@Model.rElephant2.C);
+        drawKnight(ctx,@Model.rKnight1.X,@Model.rKnight1.Y, @Model.rKnight1.W,@Model.rElephant2.C);
+        drawKnight(ctx,@Model.rKnight2.X,@Model.rKnight2.Y,@Model.rKnight2.W, @Model.rKnight2.C);
+        drawChariot(ctx,@Model.rChariot1.X,@Model.rChariot1.Y,@Model.rChariot1.W, @Model.rChariot1.C);
+        drawChariot(ctx,@Model.rChariot2.X,@Model.rChariot2.Y, @Model.rChariot2.W,@Model.rChariot2.C);
+        drawCannon(ctx,@Model.rCannon1.X,@Model.rCannon1.Y, @Model.rCannon1.W,@Model.rCannon1.C);
+        drawCannon(ctx,@Model.rCannon2.X,@Model.rCannon2.Y, @Model.rCannon2.W,@Model.rCannon2.C);
+        drawSoldier(ctx,@Model.rSoldier1.X,@Model.rSoldier1.Y, @Model.rSoldier1.W,@Model.rSoldier1.C);
+        drawSoldier(ctx,@Model.rSoldier2.X,@Model.rSoldier2.Y, @Model.rSoldier2.W,@Model.rSoldier2.C);
+        drawSoldier(ctx,@Model.rSoldier3.X,@Model.rSoldier3.Y, @Model.rSoldier3.W,@Model.rSoldier3.C);
+        drawSoldier(ctx,@Model.rSoldier4.X,@Model.rSoldier4.Y, @Model.rSoldier4.W,@Model.rSoldier4.C);
+        drawSoldier(ctx,@Model.rSoldier5.X,@Model.rSoldier5.Y, @Model.rSoldier5.W,@Model.rSoldier5.C);
         
         /*
         drawBlackGeneral(ctx,300 + 4 * 50, 100);
@@ -476,7 +694,7 @@
         }
         */
         //var xCell = document.getElementById("eX");
-        
+        /*
         var counter=0;
         //do something on click
 
@@ -497,7 +715,7 @@
             //}
             //((mousePos.x - (300 + 4 * 50)) ^ 2 + (mousePos.y - 100) ^ 2) <= 10 ^ 2
         }, false);
-                /*
+                
         function movePiece(evt){
             var mousePos = getMousePos(canvas, evt);
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -538,7 +756,7 @@
             var y= evt.clientY - rect.top;
             cutCircle(ctx,x,y,20);
         }
-        */
+        
         //Get Mouse Position
         function getMousePos(canvas, evt) {
             var rect = canvas.getBoundingClientRect();
@@ -547,7 +765,7 @@
                 y: evt.clientY - rect.top
             };
         }
-       
+       */
         //function checkInside(x,y,)
     </script>
     <p id="block1">I love you Sophia</p>

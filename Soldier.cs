@@ -2,9 +2,9 @@
 
 namespace ChineseChessXiangQi.Pages
 {
-    public class General: Piece
-    {   
-        public General(double x, double y, double w, int c)
+    public class Soldier : Piece
+    {
+        public Soldier (double x, double y, double w, int c)
         {
             X = x;
             Y = y;
@@ -13,5 +13,3 @@ namespace ChineseChessXiangQi.Pages
         }
     }
 }
-
-
