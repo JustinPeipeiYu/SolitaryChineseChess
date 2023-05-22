@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Security.Cryptography.X509Certificates;
-//for testing purposes
 using System.Collections.Generic;
 using System;
+using Microsoft.AspNetCore.Razor.TagHelpers;
+using Microsoft.AspNetCore.Html;
+
 namespace ChineseChessXiangQi.Pages
 {
     public class IndexModel : PageModel
@@ -18,10 +20,9 @@ namespace ChineseChessXiangQi.Pages
         public static double xStart = 200;
         public static double yStart = 50;
         public static double width = 60;
-
         public List<Position> positions = new List<Position>();
         public List<Piece> pieces = new List<Piece>();
-
+        public static int i = 0;
         /*
         public List<Piece> blackPieces = new List<Piece> { blackGeneral, blackGuard1, blackGuard2, blackElephant1, 
             blackElephant2, blackHorse1, blackHorse2, blackRook1, blackRook2, blackCannon1, blackCannon2, 
@@ -41,6 +42,7 @@ namespace ChineseChessXiangQi.Pages
             return (Math.Sqrt(a2 + b2) <= width);
         }
         */
+       
         public void OnGet()
         {
             for (int i = 1; i <= 10; i++)
@@ -82,6 +84,8 @@ namespace ChineseChessXiangQi.Pages
             pieces.Add(new Soldier(xStart + 4 * width, yStart + 6 * width, width, 0,7));
             pieces.Add(new Soldier(xStart + 6 * width, yStart + 6 * width, width, 0,7));
             pieces.Add(new Soldier(xStart + 8 * width, yStart + 6 * width, width, 0,7));
+            
+            
         }
     }
 }

@@ -180,90 +180,40 @@
             //all 32 game pieces
         
         drawGameBoard(ctx,xStart, yStart, width);
-        @foreach (var piece in Model.pieces)
-        {
-            
-        }
-        drawPiece(ctx,@Model.pieces[0].X,@Model.pieces[0].Y,@Model.pieces[0].W,@Model.pieces[0].C,@Model.pieces[0].N);
         
+        drawPiece(ctx, @Model.pieces[0].X, @Model.pieces[0].Y, @Model.pieces[0].W, @Model.pieces[0].C, @Model.pieces[0].N);//0
+        drawPiece(ctx, @Model.pieces[1].X, @Model.pieces[1].Y, @Model.pieces[1].W, @Model.pieces[1].C, @Model.pieces[1].N);//1
+        drawPiece(ctx, @Model.pieces[2].X, @Model.pieces[2].Y, @Model.pieces[2].W, @Model.pieces[2].C, @Model.pieces[2].N);//2
+        drawPiece(ctx, @Model.pieces[3].X, @Model.pieces[3].Y, @Model.pieces[3].W, @Model.pieces[3].C, @Model.pieces[3].N);//3
+        drawPiece(ctx, @Model.pieces[4].X, @Model.pieces[4].Y, @Model.pieces[4].W, @Model.pieces[4].C, @Model.pieces[4].N);//4
+        drawPiece(ctx, @Model.pieces[5].X, @Model.pieces[5].Y, @Model.pieces[5].W, @Model.pieces[5].C, @Model.pieces[5].N);//5
+        drawPiece(ctx, @Model.pieces[6].X, @Model.pieces[6].Y, @Model.pieces[6].W, @Model.pieces[6].C, @Model.pieces[6].N);//6
+        drawPiece(ctx, @Model.pieces[7].X, @Model.pieces[7].Y, @Model.pieces[7].W, @Model.pieces[7].C, @Model.pieces[7].N);//7
+        drawPiece(ctx, @Model.pieces[8].X, @Model.pieces[8].Y, @Model.pieces[8].W, @Model.pieces[8].C, @Model.pieces[8].N);//8
+        drawPiece(ctx, @Model.pieces[9].X, @Model.pieces[9].Y, @Model.pieces[9].W, @Model.pieces[9].C, @Model.pieces[9].N);//9
+        drawPiece(ctx, @Model.pieces[10].X, @Model.pieces[10].Y, @Model.pieces[10].W, @Model.pieces[10].C, @Model.pieces[10].N);//10
+        drawPiece(ctx, @Model.pieces[11].X, @Model.pieces[11].Y, @Model.pieces[11].W, @Model.pieces[11].C, @Model.pieces[11].N);//11
+        drawPiece(ctx, @Model.pieces[12].X, @Model.pieces[12].Y, @Model.pieces[12].W, @Model.pieces[12].C, @Model.pieces[12].N);//12
+        drawPiece(ctx, @Model.pieces[13].X, @Model.pieces[13].Y, @Model.pieces[13].W, @Model.pieces[13].C, @Model.pieces[13].N);//13
+        drawPiece(ctx, @Model.pieces[14].X, @Model.pieces[14].Y, @Model.pieces[14].W, @Model.pieces[14].C, @Model.pieces[14].N);//14
+        drawPiece(ctx, @Model.pieces[15].X, @Model.pieces[15].Y, @Model.pieces[15].W, @Model.pieces[15].C, @Model.pieces[15].N);//15
+        drawPiece(ctx, @Model.pieces[16].X, @Model.pieces[16].Y, @Model.pieces[16].W, @Model.pieces[16].C, @Model.pieces[16].N);//16
+        drawPiece(ctx, @Model.pieces[17].X, @Model.pieces[17].Y, @Model.pieces[17].W, @Model.pieces[17].C, @Model.pieces[17].N);//17
+        drawPiece(ctx, @Model.pieces[18].X, @Model.pieces[18].Y, @Model.pieces[18].W, @Model.pieces[18].C, @Model.pieces[18].N);//18
+        drawPiece(ctx, @Model.pieces[19].X, @Model.pieces[19].Y, @Model.pieces[19].W, @Model.pieces[19].C, @Model.pieces[19].N);//19
+        drawPiece(ctx, @Model.pieces[20].X, @Model.pieces[20].Y, @Model.pieces[20].W, @Model.pieces[20].C, @Model.pieces[20].N);//20
+        drawPiece(ctx, @Model.pieces[21].X, @Model.pieces[21].Y, @Model.pieces[21].W, @Model.pieces[21].C, @Model.pieces[21].N);//21
+        drawPiece(ctx, @Model.pieces[22].X, @Model.pieces[22].Y, @Model.pieces[22].W, @Model.pieces[22].C, @Model.pieces[22].N);//22
+        drawPiece(ctx, @Model.pieces[23].X, @Model.pieces[23].Y, @Model.pieces[23].W, @Model.pieces[23].C, @Model.pieces[23].N);//23
+        drawPiece(ctx, @Model.pieces[24].X, @Model.pieces[24].Y, @Model.pieces[24].W, @Model.pieces[24].C, @Model.pieces[24].N);//24
+        drawPiece(ctx, @Model.pieces[25].X, @Model.pieces[25].Y, @Model.pieces[25].W, @Model.pieces[25].C, @Model.pieces[25].N);//25
+        drawPiece(ctx, @Model.pieces[26].X, @Model.pieces[26].Y, @Model.pieces[26].W, @Model.pieces[26].C, @Model.pieces[26].N);//26
+        drawPiece(ctx, @Model.pieces[27].X, @Model.pieces[27].Y, @Model.pieces[27].W, @Model.pieces[27].C, @Model.pieces[27].N);//27
+        drawPiece(ctx, @Model.pieces[28].X, @Model.pieces[28].Y, @Model.pieces[28].W, @Model.pieces[28].C, @Model.pieces[28].N);//28
+        drawPiece(ctx, @Model.pieces[29].X, @Model.pieces[29].Y, @Model.pieces[29].W, @Model.pieces[29].C, @Model.pieces[29].N);//29
+        drawPiece(ctx, @Model.pieces[30].X, @Model.pieces[30].Y, @Model.pieces[30].W, @Model.pieces[30].C, @Model.pieces[30].N);//30
+        drawPiece(ctx, @Model.pieces[31].X, @Model.pieces[31].Y, @Model.pieces[31].W, @Model.pieces[31].C, @Model.pieces[31].N);//31
         
-        //drawPiece(ctx, "general", "black", xStart + 4 * width, yStart)
-        
-        
-        //var counter=0;
-        //do something on click
-        /*
-        canvas.addEventListener("click", function (evt) {
-            var mousePos = getMousePos(canvas, evt);
-            if (Math.pow(mousePos.x - Model.bGeneral.X,2)+Math.pow(mousePos.y - Model.bGeneral.Y,2)>=Model.bGeneral.W){
-                canvas.addEventListener("mousemove", movePiece, false);
-            }
-
-        
-            //alert(mousePos.x + ',' + mousePos.y);
-            //test for mouse click on a piece
-            //a = mousePos.x - (Model.X);
-            //a2 = a * a;
-            //b = mousePos.y - Model.Y;
-            //b2 = b * b;
-            //if (Math.sqrt(a2 + b2) <= 20 && counter % 2 == 0) {
-                    //counter++;
-                    //canvas.addEventListener("mousemove", movePiece, false);
-            //} else if (Math.sqrt(a2 + b2) <= 20 && counter % 2 == 1) {
-                    //counter++;
-                    //canvas.removeEventListener("mousemove", movePiece, false);
-            //}
-            //((mousePos.x - (300 + 4 * 50)) ^ 2 + (mousePos.y - 100) ^ 2) <= 10 ^ 2
-        }, false);
-        */
-       /*
-        function movePiece(evt){
-            var mousePos = getMousePos(canvas, evt);
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawGameBoard(ctx, xStart, yStart, width);
-            drawGeneral(ctx, mousePos.x, mousePos.y, Model.bGeneral.W, Model.bGeneral.C);
-            drawGuard(ctx, Model.bGuard1.X, Model.bGuard1.Y, Model.bGuard1.W, Model.bGuard1.C);
-            drawGuard(ctx, Model.bGuard2.X, Model.bGuard2.Y, Model.bGuard2.W, Model.bGuard2.C);
-            drawElephant(ctx, Model.bElephant1.X, Model.bElephant1.Y, Model.bElephant1.W, Model.bElephant1.C);
-            drawElephant(ctx, Model.bElephant2.X, Model.bElephant2.Y, Model.bElephant2.W, Model.bElephant2.C);
-            drawKnight(ctx, Model.bKnight1.X, Model.bKnight1.Y, Model.bKnight1.W, Model.bElephant2.C);
-            drawKnight(ctx, Model.bKnight2.X, Model.bKnight2.Y, Model.bKnight2.W, Model.bKnight2.C);
-            drawChariot(ctx, Model.bChariot1.X, Model.bChariot1.Y, Model.bChariot1.W, Model.bChariot1.C);
-            drawChariot(ctx, Model.bChariot2.X, Model.bChariot2.Y, Model.bChariot2.W, Model.bChariot2.C);
-            drawCannon(ctx, Model.bCannon1.X, Model.bCannon1.Y, Model.bCannon1.W, Model.bCannon1.C);
-            drawCannon(ctx, Model.bCannon2.X, Model.bCannon2.Y, Model.bCannon2.W, Model.bCannon2.C);
-            drawSoldier(ctx, Model.bSoldier1.X, Model.bSoldier1.Y, Model.bSoldier1.W, Model.bSoldier1.C);
-            drawSoldier(ctx, Model.bSoldier2.X, Model.bSoldier2.Y, Model.bSoldier2.W, Model.bSoldier2.C);
-            drawSoldier(ctx, Model.bSoldier3.X, Model.bSoldier3.Y, Model.bSoldier3.W, Model.bSoldier3.C);
-            drawSoldier(ctx, Model.bSoldier4.X, Model.bSoldier4.Y, Model.bSoldier4.W, Model.bSoldier4.C);
-            drawSoldier(ctx, Model.bSoldier5.X, Model.bSoldier5.Y, Model.bSoldier5.W, Model.bSoldier5.C);
-
-            drawGeneral(ctx, Model.rGeneral.X, Model.rGeneral.Y, Model.rGeneral.W, Model.rGeneral.C);
-            drawGuard(ctx, Model.rGuard1.X, Model.rGuard1.Y, Model.rGuard1.W,Model.rGuard1.C);
-            drawGuard(ctx, Model.rGuard2.X, Model.rGuard2.Y, Model.rGuard2.W, Model.rGuard2.C);
-            drawElephant(ctx, Model.rElephant1.X, Model.rElephant1.Y, Model.rElephant1.W, Model.rElephant1.C);
-            drawElephant(ctx, Model.rElephant2.X, Model.rElephant2.Y, Model.rElephant2.W, Model.rElephant2.C);
-            drawKnight(ctx, Model.rKnight1.X, Model.rKnight1.Y, Model.rKnight1.W, Model.rElephant2.C);
-            drawKnight(ctx, Model.rKnight2.X, Model.rKnight2.Y, Model.rKnight2.W, Model.rKnight2.C);
-            drawChariot(ctx, Model.rChariot1.X, Model.rChariot1.Y, Model.rChariot1.W, Model.rChariot1.C);
-            drawChariot(ctx, Model.rChariot2.X, Model.rChariot2.Y, Model.rChariot2.W, Model.rChariot2.C);
-            drawCannon(ctx, Model.rCannon1.X, Model.rCannon1.Y, Model.rCannon1.W, Model.rCannon1.C);
-            drawCannon(ctx, Model.rCannon2.X, Model.rCannon2.Y, Model.rCannon2.W, Model.rCannon2.C);
-            drawSoldier(ctx, Model.rSoldier1.X, Model.rSoldier1.Y, Model.rSoldier1.W, Model.rSoldier1.C);
-            drawSoldier(ctx, Model.rSoldier2.X, Model.rSoldier2.Y, Model.rSoldier2.W, Model.rSoldier2.C);
-            drawSoldier(ctx, Model.rSoldier3.X, Model.rSoldier3.Y, Model.rSoldier3.W, Model.rSoldier3.C);
-            drawSoldier(ctx, Model.rSoldier4.X, Model.rSoldier4.Y, Model.rSoldier4.W, Model.rSoldier4.C);
-            drawSoldier(ctx, Model.rSoldier5.X, Model.rSoldier5.Y, Model.rSoldier5.W, Model.rSoldier5.C);
-        }*/
-        /*
-        function erase(canvas, evt){
-            var rect = canvas.getBoundingClientRect();
-            var x= evt.clientX - rect.left;
-            var y= evt.clientY - rect.top;
-            cutCircle(ctx,x,y,20);
-        }
-        */
-        //Get Mouse Position
         
         function getMousePos(canvas, evt) {
             var rect = canvas.getBoundingClientRect();
