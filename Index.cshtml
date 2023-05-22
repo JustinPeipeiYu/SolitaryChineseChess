@@ -21,7 +21,7 @@
     </canvas>
 
     
-    <script>
+    <script id="script">
         
         var ctx = document.getElementById("canvas").getContext("2d");
         var xStart = 200;
@@ -180,41 +180,6 @@
             //all 32 game pieces
         
         drawGameBoard(ctx,xStart, yStart, width);
-        
-        drawPiece(ctx, @Model.pieces[0].X, @Model.pieces[0].Y, @Model.pieces[0].W, @Model.pieces[0].C, @Model.pieces[0].N);//0
-        drawPiece(ctx, @Model.pieces[1].X, @Model.pieces[1].Y, @Model.pieces[1].W, @Model.pieces[1].C, @Model.pieces[1].N);//1
-        drawPiece(ctx, @Model.pieces[2].X, @Model.pieces[2].Y, @Model.pieces[2].W, @Model.pieces[2].C, @Model.pieces[2].N);//2
-        drawPiece(ctx, @Model.pieces[3].X, @Model.pieces[3].Y, @Model.pieces[3].W, @Model.pieces[3].C, @Model.pieces[3].N);//3
-        drawPiece(ctx, @Model.pieces[4].X, @Model.pieces[4].Y, @Model.pieces[4].W, @Model.pieces[4].C, @Model.pieces[4].N);//4
-        drawPiece(ctx, @Model.pieces[5].X, @Model.pieces[5].Y, @Model.pieces[5].W, @Model.pieces[5].C, @Model.pieces[5].N);//5
-        drawPiece(ctx, @Model.pieces[6].X, @Model.pieces[6].Y, @Model.pieces[6].W, @Model.pieces[6].C, @Model.pieces[6].N);//6
-        drawPiece(ctx, @Model.pieces[7].X, @Model.pieces[7].Y, @Model.pieces[7].W, @Model.pieces[7].C, @Model.pieces[7].N);//7
-        drawPiece(ctx, @Model.pieces[8].X, @Model.pieces[8].Y, @Model.pieces[8].W, @Model.pieces[8].C, @Model.pieces[8].N);//8
-        drawPiece(ctx, @Model.pieces[9].X, @Model.pieces[9].Y, @Model.pieces[9].W, @Model.pieces[9].C, @Model.pieces[9].N);//9
-        drawPiece(ctx, @Model.pieces[10].X, @Model.pieces[10].Y, @Model.pieces[10].W, @Model.pieces[10].C, @Model.pieces[10].N);//10
-        drawPiece(ctx, @Model.pieces[11].X, @Model.pieces[11].Y, @Model.pieces[11].W, @Model.pieces[11].C, @Model.pieces[11].N);//11
-        drawPiece(ctx, @Model.pieces[12].X, @Model.pieces[12].Y, @Model.pieces[12].W, @Model.pieces[12].C, @Model.pieces[12].N);//12
-        drawPiece(ctx, @Model.pieces[13].X, @Model.pieces[13].Y, @Model.pieces[13].W, @Model.pieces[13].C, @Model.pieces[13].N);//13
-        drawPiece(ctx, @Model.pieces[14].X, @Model.pieces[14].Y, @Model.pieces[14].W, @Model.pieces[14].C, @Model.pieces[14].N);//14
-        drawPiece(ctx, @Model.pieces[15].X, @Model.pieces[15].Y, @Model.pieces[15].W, @Model.pieces[15].C, @Model.pieces[15].N);//15
-        drawPiece(ctx, @Model.pieces[16].X, @Model.pieces[16].Y, @Model.pieces[16].W, @Model.pieces[16].C, @Model.pieces[16].N);//16
-        drawPiece(ctx, @Model.pieces[17].X, @Model.pieces[17].Y, @Model.pieces[17].W, @Model.pieces[17].C, @Model.pieces[17].N);//17
-        drawPiece(ctx, @Model.pieces[18].X, @Model.pieces[18].Y, @Model.pieces[18].W, @Model.pieces[18].C, @Model.pieces[18].N);//18
-        drawPiece(ctx, @Model.pieces[19].X, @Model.pieces[19].Y, @Model.pieces[19].W, @Model.pieces[19].C, @Model.pieces[19].N);//19
-        drawPiece(ctx, @Model.pieces[20].X, @Model.pieces[20].Y, @Model.pieces[20].W, @Model.pieces[20].C, @Model.pieces[20].N);//20
-        drawPiece(ctx, @Model.pieces[21].X, @Model.pieces[21].Y, @Model.pieces[21].W, @Model.pieces[21].C, @Model.pieces[21].N);//21
-        drawPiece(ctx, @Model.pieces[22].X, @Model.pieces[22].Y, @Model.pieces[22].W, @Model.pieces[22].C, @Model.pieces[22].N);//22
-        drawPiece(ctx, @Model.pieces[23].X, @Model.pieces[23].Y, @Model.pieces[23].W, @Model.pieces[23].C, @Model.pieces[23].N);//23
-        drawPiece(ctx, @Model.pieces[24].X, @Model.pieces[24].Y, @Model.pieces[24].W, @Model.pieces[24].C, @Model.pieces[24].N);//24
-        drawPiece(ctx, @Model.pieces[25].X, @Model.pieces[25].Y, @Model.pieces[25].W, @Model.pieces[25].C, @Model.pieces[25].N);//25
-        drawPiece(ctx, @Model.pieces[26].X, @Model.pieces[26].Y, @Model.pieces[26].W, @Model.pieces[26].C, @Model.pieces[26].N);//26
-        drawPiece(ctx, @Model.pieces[27].X, @Model.pieces[27].Y, @Model.pieces[27].W, @Model.pieces[27].C, @Model.pieces[27].N);//27
-        drawPiece(ctx, @Model.pieces[28].X, @Model.pieces[28].Y, @Model.pieces[28].W, @Model.pieces[28].C, @Model.pieces[28].N);//28
-        drawPiece(ctx, @Model.pieces[29].X, @Model.pieces[29].Y, @Model.pieces[29].W, @Model.pieces[29].C, @Model.pieces[29].N);//29
-        drawPiece(ctx, @Model.pieces[30].X, @Model.pieces[30].Y, @Model.pieces[30].W, @Model.pieces[30].C, @Model.pieces[30].N);//30
-        drawPiece(ctx, @Model.pieces[31].X, @Model.pieces[31].Y, @Model.pieces[31].W, @Model.pieces[31].C, @Model.pieces[31].N);//31
-        
-        
         function getMousePos(canvas, evt) {
             var rect = canvas.getBoundingClientRect();
             return {
@@ -222,8 +187,13 @@
                 y: evt.clientY - rect.top
             };
         }
-       
         //function checkInside(x,y,)
     </script>
+        @for (var i = 0; i < 32; i++)
+        {
+               <script id="script">
+               drawPiece(ctx, @Model.pieces[i].X, @Model.pieces[i].Y, @Model.pieces[i].W, @Model.pieces[i].C, @Model.pieces[i].N);
+               </script>
+        }
 </body>
 
