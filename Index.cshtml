@@ -7,7 +7,10 @@
 <!---->
 <head>
     <style type="text/css">
-        canvas{border:thin solid black}
+        canvas {
+            border: thin solid black;
+            background-color: peachpuff;
+        }
         p{background: gray;
           color:white;
           padding:10px;
@@ -22,7 +25,6 @@
 
     
     <script>
-        
         var ctx = document.getElementById("canvas").getContext("2d");
         var xStart = 200;
         var yStart = 50;
@@ -70,9 +72,9 @@
 
         function drawPiece(ctx,x,y,width,c,n){
             ctx.strokeStyle = "black";
-            ctx.fillStyle = "#FFE5B4";
-            ctx.beginPath();
+            ctx.fillStyle = "black";
             ctx.lineWidth = "4";
+            ctx.beginPath();
             ctx.arc(x, y, width/2.4, 0, Math.PI * 2, true);
             ctx.fill();
             ctx.stroke();
@@ -80,7 +82,13 @@
             ctx.lineWidth = "1";
             ctx.font = "24px sans-serif";
             if (c==1){
-                ctx.fillStyle = "black";
+                ctx.strokeStyle = "white";
+                ctx.fillStyle = "white";
+                ctx.lineWidth = "1";
+                ctx.beginPath();
+                ctx.arc(x, y, width / 2.5, 0, Math.PI * 2, true);
+                ctx.stroke();
+                ctx.closePath();
                 if (n==1){
                     ctx.fillText("将", x - width / 5, y);
                     ctx.strokeText("将", x - width / 5, y);
@@ -127,6 +135,11 @@
             } else {
                 ctx.strokeStyle = "red";
                 ctx.fillStyle = "red";
+                ctx.lineWidth = "1";
+                ctx.beginPath();
+                ctx.arc(x, y, width / 2.5, 0, Math.PI * 2, true);
+                ctx.stroke();
+                ctx.closePath();
                 if (n==1){
                     ctx.fillText("帅", x - width / 5, y);
                     ctx.strokeText("帅", x - width / 5, y);
