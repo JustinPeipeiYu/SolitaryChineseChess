@@ -6,7 +6,7 @@ using System;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.AspNetCore.Html;
 
-namespace ChineseChessXiangQi.Pages
+namespace ChineseChessAlly.Pages
 {
     public class IndexModel : PageModel
     {
@@ -42,16 +42,17 @@ namespace ChineseChessXiangQi.Pages
             return (Math.Sqrt(a2 + b2) <= width);
         }
         */
-       
+        
         public void OnGet()
         {
             for (int i = 1; i <= 10; i++)
             {
                 for (int j = 1;j <= 9; j++) 
-                {
+                {//collect all positions by creating specific positions and adding to a list
                     positions.Add(new Position(xStart + (j-1)*width, yStart + (i-1)*width, width,i,j));
                 }
             }
+            //collect all pieces by creating specific pieces and adding to a List
             pieces.Add(new General(xStart + 4 * width, yStart, width, 1, 1));
             pieces.Add(new General(xStart + 4 * width, yStart + 9 * width, width, 0, 1));
             pieces.Add(new Guard(xStart + 3 * width, yStart, width, 1,6));
@@ -84,7 +85,6 @@ namespace ChineseChessXiangQi.Pages
             pieces.Add(new Soldier(xStart + 4 * width, yStart + 6 * width, width, 0,7));
             pieces.Add(new Soldier(xStart + 6 * width, yStart + 6 * width, width, 0,7));
             pieces.Add(new Soldier(xStart + 8 * width, yStart + 6 * width, width, 0,7));
-            
             
         }
     }

@@ -180,6 +180,22 @@
             //all 32 game pieces
         
         drawGameBoard(ctx,xStart, yStart, width);
+            //alert(mousePos.x + ',' + mousePos.y);
+            //test for mouse click on a piece
+            //a = mousePos.x - (Model.X);
+            //a2 = a * a;
+            //b = mousePos.y - Model.Y;
+            //b2 = b * b;
+            //if (Math.sqrt(a2 + b2) <= 20 && counter % 2 == 0) {
+            //counter++;
+            //canvas.addEventListener("mousemove", movePiece, false);
+            //} else if (Math.sqrt(a2 + b2) <= 20 && counter % 2 == 1) {
+            //counter++;
+            //canvas.removeEventListener("mousemove", movePiece, false);
+            //}
+            //((mousePos.x - (300 + 4 * 50)) ^ 2 + (mousePos.y - 100) ^ 2) <= 10 ^ 2
+     
+
         function getMousePos(canvas, evt) {
             var rect = canvas.getBoundingClientRect();
             return {
@@ -187,12 +203,36 @@
                 y: evt.clientY - rect.top
             };
         }
+        
+        
+        /*
+        function pickUp(evt,x,y,w, ctx){
+            var mousePos = getMousePos(canvas, evt);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        }*/
+        function clickOver(evt){
+            //var mousePos = getMousePos(canvas, evt);
+            //if (Math.pow(mousePos.x - , 2) + Math.pow(mousePos.y - , 2) <= Math.pow(,2)){
+                //canvas.addEventListener("mousemove", pickUp(x,y,w, ctx), false);
+            //var mousePos = getMousePos(canvas, evt);
+            //if (Math.pow(mousePos.x - , 2) + Math.pow(mousePos.y - , 2) <= Math.pow(,2)){
+            //alert(mousePos.x +","+mousePos.y);
+            return true;
+            //}
+            //
+        }
+
+        
         //function checkInside(x,y,)
     </script>
+
         @for (var i = 0; i < 32; i++)
         {
                <script id="script">
+                
                drawPiece(ctx, @Model.pieces[i].X, @Model.pieces[i].Y, @Model.pieces[i].W, @Model.pieces[i].C, @Model.pieces[i].N);
+               canvas.addEventListener("click", clickOver, false);
                </script>
         }
 </body>

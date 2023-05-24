@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace ChineseChessXiangQi.Pages
+namespace ChineseChessAlly.Pages
 {
     public class Knight : Piece
     {
