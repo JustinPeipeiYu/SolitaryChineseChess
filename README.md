@@ -1,5 +1,4 @@
-## About My Game
-Although there are many chinese chess games on the internet, my version of xiangqi is the only version that will include the English translation of piece names- how convenient is that!
+This is a helper game for those who want to learn chinese chess but are A) illerate in chinese and B) new to the rules of the game. It can be played with a best friend or share the link with anyone.
 
 
 
