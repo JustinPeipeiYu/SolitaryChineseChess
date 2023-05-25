@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace ChineseChessAlly.Pages
+namespace ChessAlly.Pages
 {
     public class Guard : Piece
     {
