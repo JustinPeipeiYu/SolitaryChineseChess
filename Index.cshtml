@@ -69,6 +69,14 @@
             drawDiagonalLine(ctx,xStart + 3 * width, xStart + 5 * width, yStart + 9 * width, yStart + 7 * width);
         }
         
+        function highlightPos(ctx, x, y) {
+            ctx.fillStyle = "#4f7cbf80";
+            ctx.strokeStyle = "#4f7cbf80";
+            ctx.beginPath();
+            ctx.arc(x, y, width / 2.4, 0, Math.PI * 2, true);
+            ctx.fill();
+            ctx.stroke();
+        }
 
         function drawPiece(ctx,x,y,width,c,n){
             ctx.strokeStyle = "black";
@@ -211,17 +219,16 @@
     
     @for (var j = 0; j < Model.pieces.Count; j++)
     {
-            <script>
+        <script>
                 canvas.addEventListener("click", function (evt) {
                     var mousePos = getMousePos(canvas, evt);
                     if (Math.sqrt(Math.pow(mousePos.x - @Model.pieces[j].X, 2) + Math.pow(mousePos.y - @Model.pieces[j].Y, 2)) <= @Model.pieces[j].W / 2.4)
                     {
                         alert(mousePos.x+","+mousePos.y);
+                        highlightPos(ctx,@Model.pieces[j].X, @Model.pieces[j].Y);
                     }
                 }, false);
-            
-            </script>
-      
+        </script>
     }
 
 </body>
