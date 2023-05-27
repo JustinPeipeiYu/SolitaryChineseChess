@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace ChessAlly.Pages
+namespace SolitaryChineseChess.Pages
 {
     public class Cannon : Piece
     {

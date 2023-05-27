@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.AspNetCore.Html;
 using Microsoft.VisualBasic;
 
-namespace ChessAlly.Pages
+namespace SolitaryChineseChess.Pages
 {
     public class IndexModel : PageModel
     {

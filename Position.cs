@@ -1,4 +1,4 @@
-﻿namespace ChessAlly.Pages
+﻿namespace SolitaryChineseChess.Pages
 {
     public class Position : Board
     {
